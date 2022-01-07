@@ -1,0 +1,13 @@
+{
+    "name": "stock",
+    "description": "stock simulator xd",
+    "version": "1.0.0",
+    "engines": {
+      "node": "14.x"
+    },
+    "scripts": {
+        "start": "node index.js",
+        "build": "ng build",
+        "heroku-postbuild": "ng build --prod"
+      }
+  }
