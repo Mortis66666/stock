@@ -1,8 +1,9 @@
-const express = require("express")
-const app = express()
+const express = require("express");
+const app = express();
 
-app.get("/", function (res,req) {
-    res.render("index")
-})
+app.get("/", (res,req) => {
+    res.
+    res.render("index");
+});
 
-app.listen(process.env.PORT || 5000)
+app.listen(process.env.PORT || 3000)
