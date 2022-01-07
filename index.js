@@ -1,5 +1,8 @@
-const h1 = document.createElement("h1")
+const express = require("express")
+const app = express()
 
-h1.innerHTML = "XD"
+app.get("/", function (res,req) {
+    res.send("Hi")
+})
 
-document.body.append(h1)
+app.listen(process.env.PORT || 5000)
