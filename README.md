@@ -2,3 +2,4 @@
 ## This is a stock simulator website and it is still working in progress
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/apps/mortis666app/deploy/github)
+[Go to website](https://mortis666stocksimulator.herokuapp.com/)
