@@ -1,3 +1,18 @@
-/*
-TODO login styling
-*/
+body {
+    background-color: #2e2b2b;
+}
+
+#header {
+    background-color: black;
+    font-family: 'Mochiy Pop P One', sans-serif;
+    height: 100px;
+
+    margin-top: 0px;
+    text-align: center;
+}
+
+#welcome {
+    color: #00FF73;
+    top: 50px;
+    font-size: 70px;
+}
