@@ -7,8 +7,8 @@
 
     <title>Login to your account</title>
 
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/login.css')}}">
-    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mortis.png')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='images/mortis.png')}}">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='styles/login.css')}}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,12 +16,30 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet"> 
-
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dongle:wght@300&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <div id="header">
         <h1 id="welcome">Login to your account</h1>
     </div>
-    <!--TODO something complicated-->
+    
+    <div id="loginForm">
+        <form>
+            <label for="username" class="formlabel">Username:</label>
+            <br>
+            <input type="text" class="forminput">
+            <label for="password" class="formlabel">Password:</label>
+            <input type="password" class="forminput">
+
+            <input type="submit" class="submit" id="submit" value="Login">
+        </form>
+    </div>
+
+    <div class="donthaveaccount">
+        <p>
+            Dont have an account? <a href="https://mortis666stocksimulator.herokuapp.com/signup">Sign up!</a>
+        </p>
+    </div>
+    <script src="{{url_for('static',filename='scripts/login.js')}}"></script>
 </body>
 </html>

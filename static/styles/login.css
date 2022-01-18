@@ -16,3 +16,82 @@ body {
     top: 50px;
     font-size: 70px;
 }
+
+#loginForm {
+    border: 5px gold solid;
+    border-style: outset;
+    border-radius: 10px;
+
+    width: 300px;
+    height: 350px;
+
+    margin: auto;
+
+    position: relative;
+
+    top: 70px;
+}
+
+.formlabel {
+    color: #00FF73;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 30px;
+    
+    position: relative;
+
+    left: 55px;
+}
+
+.forminput {
+    height: 35px;
+    width: 250px;
+
+    position: relative;
+
+    left: 20px;
+    font-size: 30px;
+    font-family: 'Dongle', sans-serif;
+
+    position: relative;
+
+    border-radius: 20px;
+
+    font-weight: bold;
+
+
+}
+
+.submit {
+    width: 120px;
+    height: 60px;
+
+    position: relative;
+
+    top: 100px;
+    left: 80px;
+
+    font-family: 'Archivo Black', sans-serif;
+    color: #00FF73;
+    font-size: 30px;
+    font-weight: 100px;
+
+    background-color: black;
+    text-align: center;
+
+    border: 5px solid #ff0026;
+}
+
+.donthaveaccount {
+    color: #00FF73;
+
+    font-size: 25px;
+
+    position: absolute;
+
+    left: 39%;
+    top: 75%;
+}
+
+a {
+    color: lightblue;
+}
