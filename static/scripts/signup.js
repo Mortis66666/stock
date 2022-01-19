@@ -22,6 +22,17 @@ function pass(object,warningId) {
     removeWarning(warningId);
 }
 
+function check (word) {
+    const valids = "qwertyuiopasdfghjklzxcvbnm_1234567890";
+
+    for (let char in word) {
+        if (!valids.includes(word[char].toLowerCase())) {
+            return false;
+        }
+    }
+    return true;
+}
+
 
 function onInput () {
     let username = document.getElementById("username");
@@ -38,6 +49,13 @@ function onInput () {
     else if (uname.length > 15) {
         warn(username,id,"Username cannot be more than 15 characters");
     }
+    else if (!check(uname)) {
+        warn(username,id,"Username can only contain alphabets, numbers and \"_\"");
+    }
+    else {
+        pass(username,id);
+    }
+
 }
 
 
