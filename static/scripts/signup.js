@@ -30,7 +30,7 @@ function onInput () {
 
     // Username warning
     const uname = username.value;
-    var id = "userWarning";
+    var id = "usernameWarning";
 
     if (uname.length < 4) {
         warn(username,id,"Username must have at least 4 characters");
