@@ -40,4 +40,4 @@ function onInput (event) {
     }
 }
 
-document.getElementById("signUpForm").addEventListener("oninput",onInput);
+document.getElementById("signupForm").addEventListener("oninput",onInput);
