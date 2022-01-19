@@ -23,7 +23,7 @@ body {
     border-radius: 10px;
 
     width: 300px;
-    height: 370px;
+    height: 400px;
 
     margin: auto;
 
@@ -55,7 +55,7 @@ body {
     position: relative;
 
     border-radius: 20px;
-    border-width: 5px;
+    border-width: 3px;
     border-color: white;
 
     font-weight: bold;
@@ -91,7 +91,7 @@ body {
     position: absolute;
 
     left: 39%;
-    top: 75%;
+    top: 80%;
 }
 
 a {
