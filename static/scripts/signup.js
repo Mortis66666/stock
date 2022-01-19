@@ -72,7 +72,7 @@ function onInput () {
     var id = "cpasswordWarning";
 
     if (!cpasswd==passwd) {
-        warn(cpasswd,id,"The password must be the same");
+        warn(cpassword,id,"The password must be the same");
     }
 }
 
