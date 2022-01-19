@@ -40,6 +40,4 @@ function onInput (event) {
     }
 }
 
-document.getElementById("username").addEventListener("oninput",onInput);
-document.getElementById("password").addEventListener("oninput",onInput);
-document.getElementById("cpassword").addEventListener("oninput",onInput);
+document.getElementById("signUpForm").addEventListener("oninput",onInput);
