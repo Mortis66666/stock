@@ -67,7 +67,7 @@ body {
 
     position: relative;
 
-    top: 90px;
+    top: 70px;
     left: 80px;
 
     font-family: 'Archivo Black', sans-serif;
@@ -101,4 +101,9 @@ a {
     position: relative;
 
     top: 10px;
+}
+
+#cpassword {
+    position: relative;
+    top: 7px;
 }
