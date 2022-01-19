@@ -23,7 +23,7 @@ function pass(object,warningId) {
 }
 
 
-function onInput (event) {
+function onInput () {
     let username = document.getElementById("username");
     let password = document.getElementById("password");
     let cpassword = document.getElementById("cpassword");
