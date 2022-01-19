@@ -56,6 +56,28 @@ function onInput () {
         pass(username,id);
     }
 
+    // Password warning
+    const passwd = password.value;
+    var id = "passwordWarning";
+
+    if (passwd.length < 6) {
+        warn(password,id,"Password must be atleast 6 characters");
+    }
+    else {
+        pass(password,id)
+    }
+
+    // Confirm password warning
+    const cpasswd = cpassword.value;
+    var id = "cpasswordWarning";
+
+    if (!cpasswd==passwd) {
+        warn(cpasswd,id,"The password must be the same");
+    }
+}
+
+function onFocus () {
+    pass;
 }
 
 
