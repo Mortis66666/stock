@@ -40,11 +40,6 @@ function onInput (event) {
     }
 }
 
-var elements = [];
-elements.push(document.getElementById("username"));
-elements.push(document.getElementById("password"));
-elements.push(document.getElementById("cpassword"));
-
-for (let element in elements) {
-    element.addEventListener("oninput",onInput)
-}
+document.getElementById("username").addEventListener("oninput",onInput);
+document.getElementById("password").addEventListener("oninput",onInput);
+document.getElementById("cpassword").addEventListener("oninput",onInput);
