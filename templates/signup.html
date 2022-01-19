@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dongle:wght@300&display=swap" rel="stylesheet"> 
-
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bree+Serif&family=Dongle&display=swap" rel="stylesheet"> 
 </head>
 <body>
     <div id="header">
@@ -26,14 +26,26 @@
 
     <div id="loginForm">
         <form>
+
             <label for="username" class="formlabel">Username:</label>
             <br>
-            <input type="text" class="forminput" required>
-            <label for="password" class="formlabel">Password:</label>
-            <input type="password" class="forminput" required>
+            <input type="text" class="forminput" id="username" required>
             <br>
+            <p id="usernameWarning" class="warning"></p>
+
+
+            <label for="password" class="formlabel">Password:</label>
+            <input type="password" class="forminput" id="password" required>
+            <br>
+            <p id="cpasswordWarning" class="warning"></p>
+            <br>
+
+
             <label for="cpassword" class="formlabel" id="confirm">Confirm Password:</label>
             <input type="password" class="forminput" id="cpassword" required>
+            <br>
+            <p id="cpasswordWarning" class="warning"></p>
+            <br>
             <input type="submit" class="submit" id="submit" value="Sign up">
         </form>
     </div>
@@ -44,6 +56,7 @@
         </p>
     </div>
     <script src="{{url_for('static',filename='scripts/login.js')}}"></script>
+    <script src="{{url_for('static',filename='scripts/signup.js')}}"></script>
 
 </body>
 </html>

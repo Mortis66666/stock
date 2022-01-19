@@ -55,6 +55,8 @@ body {
     position: relative;
 
     border-radius: 20px;
+    border-width: 1px;
+    border-color: white;
 
     font-weight: bold;
 
@@ -106,4 +108,11 @@ a {
 #cpassword {
     position: relative;
     top: 7px;
+}
+
+.warning {
+    background-color: lightgray;
+    color: red;
+    font-family: 'Bree Serif', serif;
+    font: 5px;
 }
