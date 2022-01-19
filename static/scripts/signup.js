@@ -43,7 +43,11 @@ function onInput () {
     const uname = username.value;
     var id = "usernameWarning";
 
-    if (uname.length < 4) {
+    if (uname.length == 0) {
+        username.style.borderColor = null;
+        removeWarning("usernameWarning");
+    }
+    else if (uname.length < 4) {
         warn(username,id,"Username must have at least 4 characters");
     }
     else if (uname.length > 15) {
@@ -60,7 +64,11 @@ function onInput () {
     const passwd = password.value;
     var id = "passwordWarning";
 
-    if (passwd.length < 6) {
+    if (passwd.length == 0) {
+        password.style.borderColor = null;
+        removeWarning("passwordWarning");
+    }
+    else if (passwd.length < 6) {
         warn(password,id,"Password must be atleast 6 characters");
     }
     else {
@@ -71,7 +79,11 @@ function onInput () {
     const cpasswd = cpassword.value;
     var id = "cpasswordWarning";
 
-    if (!cpasswd==passwd) {
+    if (cpasswd.length == 0) {
+        cpassword.style.borderColor = null;
+        removeWarning("cpasswordeWarning");
+    }
+    else if (!cpasswd==passwd) {
         warn(cpassword,id,"The password must be the same");
     }
 }
