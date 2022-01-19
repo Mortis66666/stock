@@ -45,7 +45,7 @@ function onInput () {
 
     if (uname.length == 0) {
         username.style.borderColor = null;
-        removeWarning("usernameWarning");
+        removeWarning(id);
     }
     else if (uname.length < 4) {
         warn(username,id,"Username must have at least 4 characters");
@@ -66,7 +66,7 @@ function onInput () {
 
     if (passwd.length == 0) {
         password.style.borderColor = null;
-        removeWarning("passwordWarning");
+        removeWarning(id);
     }
     else if (passwd.length < 6) {
         warn(password,id,"Password must be atleast 6 characters");
@@ -81,7 +81,7 @@ function onInput () {
 
     if (cpasswd.length == 0) {
         cpassword.style.borderColor = null;
-        removeWarning("cpasswordWarning");
+        removeWarning(id);
     }
     else if (!cpasswd==passwd) {
         warn(cpassword,id,"The password must be the same");
@@ -89,7 +89,7 @@ function onInput () {
 }
 
 function onFocus () {
-    pass;
+    onInput();
 }
 
 
