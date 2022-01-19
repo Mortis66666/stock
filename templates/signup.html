@@ -23,5 +23,26 @@
         <h1 id="welcome">Sign up an account</h1>
     </div>
 
+    <div id="loginForm">
+        <form>
+            <label for="username" class="formlabel">Username:</label>
+            <br>
+            <input type="text" class="forminput" required>
+            <label for="password" class="formlabel">Password:</label>
+            <input type="password" class="forminput" required>
+
+            <label for="password" class="formlabel">Confirm Password:</label>
+            <input type="password" class="forminput" required>
+            <input type="submit" class="submit" id="submit" value="Sign up">
+        </form>
+    </div>
+
+    <div class="donthaveaccount">
+        <p>
+            Already have an account? <a href="https://mortis666stocksimulator.herokuapp.com/login">Login!</a>
+        </p>
+    </div>
+    <script src="{{url_for('static',filename='scripts/login.js')}}"></script>
+
 </body>
 </html>
