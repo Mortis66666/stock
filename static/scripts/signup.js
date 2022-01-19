@@ -4,12 +4,12 @@ function makeRed (object) {
 
 function addWarning (id, warning) {
     let element = document.getElementById(id);
-    element.innerHTML = warning;
+    element.innerText = warning;
 }
 
 function removeWarning (id) {
     let element = document.getElementById(id);
-    element.innerHTML = "";
+    element.innerText = "";
 }
 
 function warn (object, warningId, reason) {
