@@ -83,7 +83,7 @@ function onInput () {
         cpassword.style.borderColor = null;
         removeWarning(id);
     }
-    else if (!cpasswd==passwd) {
+    else if (cpasswd!=passwd) {
         warn(cpassword,id,"The password must be the same");
     }
 }
