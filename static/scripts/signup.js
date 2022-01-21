@@ -1,4 +1,4 @@
-const warning = document.getElementById("warning").value
+let warning = document.getElementById("warning").value
 
 if (warning) {
     alert(warning);
