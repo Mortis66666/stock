@@ -14,8 +14,8 @@ def index():
 
 @app.route('/login')
 def login():
-
-    return render_template("login.html", warning="")
+    warning = session.get("warning","")
+    return render_template("login.html", warning=warning)
 
 
 @app.route('/signup')
@@ -47,8 +47,10 @@ def login_validator():
         valid, message = valid_login(username, password)
         if valid:
             session["username"] = username
+            session.pop("warning", None)
             return redirect(url_for('home'))
         print(message)
+        session["warning"] = message
         return redirect(url_for('login'))
 
 

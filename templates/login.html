@@ -23,12 +23,6 @@
     <div id="header">
         <h1 id="welcome">Login to your account</h1>
     </div>
-
-    <div class="warning">
-        <p>
-            {{warning}}
-        </p>
-    </div>
     
     <div id="loginForm">
         <form action="{{url_for('login_validator')}}" method="post">
@@ -47,6 +41,7 @@
             Dont have an account? <a href="https://mortis666stocksimulator.herokuapp.com/signup">Sign up!</a>
         </p>
     </div>
+    <input id="warning" type="hidden" value="{{warning}}">
     <script src="{{url_for('static',filename='scripts/login.js')}}"></script>
 </body>
 </html>
