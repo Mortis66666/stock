@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import os
-from typing import List, Union
+from typing import Tuple, Union
 import logging
 
 
@@ -10,7 +10,7 @@ client = MongoClient(db_url)
 collection = client.stocks.profile
 
 
-def valid_login(username: str, password: str) -> List[bool,str]:
+def valid_login(username: str, password: str) -> Tuple[bool,str]:
 
     results = collection.find_one({
         "username": username,
@@ -24,8 +24,13 @@ def valid_login(username: str, password: str) -> List[bool,str]:
     
 
 
-def valid_signup(username: str, password: str, confirm_password: str) -> List[bool,str]:
-    pass
+def valid_signup(username: str, password: str, confirm_password: str) -> Tuple[bool,str]:
+    
+    if password != confirm_password:
+        return False, "Password must be the same"
+    if len(password) < 6:
+        return False, "Password must be atleast 6 characters"
+    
 
 
 def get_bal(username: str) -> Union[int,None]:
