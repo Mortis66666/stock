@@ -31,12 +31,12 @@
     </div>
     
     <div id="loginForm">
-        <form>
+        <form action="{{url_for('valid')}}" method="post">
             <label for="username" class="formlabel">Username:</label>
             <br>
-            <input type="text" class="forminput" required>
+            <input type="text" class="forminput" name="username" required>
             <label for="password" class="formlabel">Password:</label>
-            <input type="password" class="forminput" required>
+            <input type="password" class="forminput" name="password" required>
 
             <input type="submit" class="submit" id="submit" value="Login">
         </form>
