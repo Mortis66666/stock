@@ -8,7 +8,7 @@ import logging
 db_url = os.environ["MONGO_URL"]
 client = MongoClient(db_url)
 
-profiles = client.stocks.profile
+profiles = client.stocks.profiles
 
 
 def valid_login(username: str, password: str) -> Tuple[bool,str]:
