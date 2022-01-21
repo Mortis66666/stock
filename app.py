@@ -48,6 +48,7 @@ def login_validator():
         if valid:
             session["username"] = username
             return redirect(url_for('home'))
+        print(message)
         return redirect(url_for('login'))
 
 
@@ -62,7 +63,8 @@ def signup_validator():
         valid, message = valid_signup(username, password, confirm_password)
         if valid:
             sign_up(username,password)
-            return redirect(url_for('home'))
+            return redirect(url_for('success'))
+        print(message)
         return redirect(url_for('login'))
 
 
