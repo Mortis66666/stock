@@ -29,11 +29,16 @@ def home():
         return redirect(url_for("login"))
     username = session["username"]
 
-    
+    return render_template("home.html")
+
+@app.route('/success')
+def success():
+
+    return render_template("success.html")
 
 
-@app.route('/valid', methods = ["POST", "GET"])
-def valid():
+@app.route('/login_validator', methods = ["POST", "GET"])
+def login_validator():
 
     if request.method == "POST":
         form = request.form
@@ -46,6 +51,19 @@ def valid():
         return redirect(url_for('login'))
 
 
+@app.route('/signup_validator', methods = ["POST", "GET"])
+def signup_validator():
+
+    if request.method == "POST":
+        form = request.form
+        username = form["username"]
+        password = form["password"]
+        confirm_password = form["cpassword"]
+        valid, message = valid_signup(username, password, confirm_password)
+        if valid:
+            sign_up(username,password)
+            return redirect(url_for('home'))
+        return redirect(url_for('login'))
 
 
 

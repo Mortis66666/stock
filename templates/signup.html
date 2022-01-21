@@ -25,22 +25,22 @@
     </div>
 
     <div id="loginForm">
-        <form id="signupForm" oninput="onInput()" onfocus="onFocus()">
+        <form id="signupForm" oninput="onInput()" onfocus="onFocus()" method="post" action="{{url_for('signup_validator')}}">
 
             <label for="username" class="formlabel">Username:</label>
-            <input type="text" class="forminput" id="username" required>
+            <input type="text" class="forminput" id="username" name="username" required>
             <p id="usernameWarning" class="warning"></p>
 
 
             <label for="password" class="formlabel">Password:</label>
-            <input type="password" class="forminput" id="password" required>
+            <input type="password" class="forminput" id="password" name="password" required>
 
             <p id="passwordWarning" class="warning"></p>
 
 
 
             <label for="cpassword" class="formlabel" id="confirm">Confirm Password:</label>
-            <input type="password" class="forminput" id="cpassword" required>
+            <input type="password" class="forminput" id="cpassword" name="cpassword" required>
             <p id="cpasswordWarning" class="warning"></p>
             <input type="submit" class="submit" id="submit" value="Sign up">
         </form>
