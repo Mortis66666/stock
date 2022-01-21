@@ -1,3 +1,4 @@
+from unittest import result
 from pymongo import MongoClient
 import os
 from typing import Tuple, Union
@@ -36,6 +37,15 @@ def valid_signup(username: str, password: str, confirm_password: str) -> Tuple[b
         return False, "Username must have at least 4 characters"
     if len(username) > 15:
         return False, "Username cannot be more than 15 characters"
+
+    result = profiles.find_one(
+        filter = {
+            "username": username
+        }
+    )
+
+    if not result:
+        return False, "Username already taken"
 
     return True, "Success"
 
