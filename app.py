@@ -70,7 +70,7 @@ def signup_validator():
             return redirect(url_for('success'))
         print(message)
         session["signup_warning"] = message
-        return redirect(url_for('login'))
+        return redirect(url_for('signup'))
 
 
 
