@@ -95,3 +95,10 @@ body {
 a {
     color: lightblue;
 }
+
+.warning {
+    background-color: lightgray;
+    color: red;
+    font-family: 'Bree Serif', serif;
+    font: 5px;
+}
