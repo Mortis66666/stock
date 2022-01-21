@@ -21,7 +21,7 @@ def login():
 @app.route('/signup')
 def signup():
 
-    return render_template("signup.html")
+    return render_template("signup.html", warning="")
 
 @app.route('/home')
 def home():
@@ -29,7 +29,7 @@ def home():
         return redirect(url_for("login"))
     username = session["username"]
 
-    return render_template("home.html")
+    return render_template("home.html", username=username)
 
 @app.route('/success')
 def success():
