@@ -31,7 +31,7 @@ def valid_signup(username: str, password: str, confirm_password: str) -> Tuple[b
         return False, "Password must be the same"
     if len(password) < 6:
         return False, "Password must be atleast 6 characters"
-    if not username.isalnum() or username == "_":
+    if not username.replace("_","").isalnum():
         return False, "Username can only contain alphabets, numbers and \"_\""
     if len(username) < 6:
         return False, "Username must have at least 4 characters"
