@@ -1,3 +1,10 @@
+const warning = document.getElementById("warning").value
+
+if (warning) {
+    alert(warning);
+}
+
+
 function makeRed (object) {
     object.style.borderColor = "red";
 }
@@ -94,10 +101,4 @@ function onInput () {
 
 function onFocus () {
     onInput();
-}
-
-const warning = document.getElementById("warning").value
-
-if (warning) {
-    alert(warning);
 }
