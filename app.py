@@ -22,7 +22,7 @@ def login():
 @app.route('/signup') # signup route
 def signup():
     warning = session.get("signup_warning","")
-    return render_template("signup.html", warning="")
+    return render_template("signup.html", warning=warning)
 
 @app.route('/home') # home route
 def home():
