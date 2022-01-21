@@ -5,7 +5,6 @@ import logging
 
 
 db_url = os.environ["MONGO_URL"]
-raise TypeError(db_url)
 client = MongoClient(db_url)
 
 collection = client.stocks.profile
