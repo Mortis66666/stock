@@ -1,3 +1,4 @@
+from logging import warning
 from flask import Flask, redirect, render_template, request, url_for, session
 from mongo import *
 import secrets
@@ -7,23 +8,23 @@ app.secret_key = secrets.token_hex()
 
 
 # Routing
-@app.route('/')
+@app.route('/') # index route
 def index():
     
     return render_template("index.html")
 
-@app.route('/login')
+@app.route('/login') # login route
 def login():
-    warning = session.get("warning","")
+    warning = session.get("login_warning","")
     return render_template("login.html", warning=warning)
 
 
-@app.route('/signup')
+@app.route('/signup') # signup route
 def signup():
-
+    warning = session.get("signup_warning","")
     return render_template("signup.html", warning="")
 
-@app.route('/home')
+@app.route('/home') # home route
 def home():
     if "username" not in session:
         return redirect(url_for("login"))
@@ -31,7 +32,7 @@ def home():
 
     return render_template("home.html", username=username)
 
-@app.route('/success')
+@app.route('/success') # success route
 def success():
 
     return render_template("success.html")
@@ -47,10 +48,10 @@ def login_validator():
         valid, message = valid_login(username, password)
         if valid:
             session["username"] = username
-            session.pop("warning", None)
+            session.pop("login_warning", None)
             return redirect(url_for('home'))
         print(message)
-        session["warning"] = message
+        session["login_warning"] = message
         return redirect(url_for('login'))
 
 
@@ -65,8 +66,10 @@ def signup_validator():
         valid, message = valid_signup(username, password, confirm_password)
         if valid:
             sign_up(username,password)
+            session.pop("signup_warning", None)
             return redirect(url_for('success'))
         print(message)
+        session["signup_warning"] = message
         return redirect(url_for('login'))
 
 

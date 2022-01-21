@@ -96,4 +96,8 @@ function onFocus () {
     onInput();
 }
 
+const warning = document.getElementById("warning").value
 
+if (warning) {
+    alert(warning);
+}
