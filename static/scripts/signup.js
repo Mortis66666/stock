@@ -86,6 +86,10 @@ function onInput () {
     else if (cpasswd!=passwd) {
         warn(cpassword,id,"The password must be the same");
     }
+
+    else {
+        pass(cpassword,id)
+    }
 }
 
 function onFocus () {
