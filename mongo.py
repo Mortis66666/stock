@@ -96,5 +96,11 @@ def add_bal(username: str, amount: int) -> None:
     )
 
 def get_user_info(username: str) -> dict:
-    # TODO get user info ex: {username:"Mortis_666", "password": ...}
-    pass
+    
+    result = profiles.find_one(
+        filter = {
+            "username": username
+        }
+    )
+
+    return result
