@@ -58,8 +58,11 @@ def sign_up(username, password):
     post = {
         "username": username,
         "password": password,
-        "coins": 500,
-        "stocks": []
+        "coins": 100,
+        "stocks": [],
+        "stock_value": 50,
+        "status": None,
+        "stock_left": 100
     }
 
     profiles.insert_one(post)
@@ -92,3 +95,6 @@ def add_bal(username: str, amount: int) -> None:
         }
     )
 
+def get_user_info(username: str) -> dict:
+    # TODO get user info ex: {username:"Mortis_666", "password": ...}
+    pass
