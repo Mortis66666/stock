@@ -1,4 +1,3 @@
-from logging import warning
 from flask import Flask, redirect, render_template, request, url_for, session
 from mongo import *
 import secrets
