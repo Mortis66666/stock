@@ -1,8 +1,8 @@
-from unittest import result
 from pymongo import MongoClient
 import os
 from typing import Tuple, Union
 import logging
+from random import choices
 
 
 db_url = os.environ["MONGO_URL"]
@@ -62,6 +62,7 @@ def sign_up(username, password):
         "stocks": [],
         "stock_value": 50,
         "status": None,
+        "streak": 0,
         "stock_left": 100
     }
 
@@ -104,3 +105,50 @@ def get_user_info(username: str) -> dict:
     )
 
     return result
+
+def task():
+
+    while True:
+
+        results = profiles.find()
+
+        for result in results:
+
+            status = result["status"]
+            streak = result["streak"]
+            
+            result = None
+            match status:
+
+                case "inc":
+
+                    result = choices(
+                        population = [
+                            "inc",
+                            "dec",
+                            "rem"
+                        ],
+                        weights = [
+                            30 + streak,
+                            20,
+                            35
+                        ]
+                    )
+
+                case "dec":
+
+                    result = choices(
+                        population = [
+                            "inc",
+                            "dec",
+                            "rem"
+                        ],
+                        weights = [
+                            20,
+                            30 + streak,
+                            35
+                        ]
+                    )
+
+                # TODO case rem and None and do something with result
+
