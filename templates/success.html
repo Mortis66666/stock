@@ -4,16 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Signup succesful!</title>
+
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/success.css')}}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <h1>
-        Signup succcessful!
-    </h1>
-    <a href="{{url_for('login')}}">
-        <button>
-            Login now!
-        </button>
-    </a>
+    <div id="header">
+        <h1 id="welcome">
+            Signup succcessful!
+        </h1>
+    </div>
+
+    <div id="loginAndsignup">
+        <a href="https://mortis666stocksimulator.herokuapp.com/login">
+            <button id="loginButton">Login now!</button>
+        </a>
+    </div>
+
+    <script src="{{url_for('static',filename='scripts/success.js')}}"></script>
 </body>
 </html>
