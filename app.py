@@ -29,8 +29,9 @@ def home():
     if "username" not in session:
         return redirect(url_for("login"))
     username = session["username"]
+    infos = get_user_info(username)
 
-    return render_template("home.html", username=username)
+    return render_template("home.html", **infos)
 
 @app.route('/success') # success route
 def success():
