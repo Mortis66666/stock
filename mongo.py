@@ -1,8 +1,10 @@
+from hashlib import new
 from pymongo import MongoClient
 import os
 from typing import Tuple, Union
 import logging
-from random import choices
+from random import choices, randint
+import time
 
 
 db_url = os.environ["MONGO_URL"]
@@ -96,6 +98,42 @@ def add_bal(username: str, amount: int) -> None:
         }
     )
 
+def add_stock_value(username: str, amount: int) -> None:
+    profiles.update_one(
+        filter = {
+            "username": username
+        },
+        update = {
+            "$inc": {
+                "stock_value": amount
+            }
+        }
+    )
+
+def add_streak(username: str, amount: int) -> None:
+    profiles.update_one(
+        filter = {
+            "username": username
+        },
+        update = {
+            "$inc": {
+                "streak": amount
+            }
+        }
+    )
+
+def change_status(username: str, new_status: str) -> None:
+    profiles.update_one(
+        filter = {
+            "username": username
+        },
+        update = {
+            "$set": {
+                "status": new_status
+            }
+        }
+    )
+
 def get_user_info(username: str) -> dict:
     
     result = profiles.find_one(
@@ -112,17 +150,18 @@ def task():
 
         results = profiles.find()
 
-        for result in results:
+        for result in results: # loop through every profile
 
             status = result["status"]
             streak = result["streak"]
+            username = result["username"]
             
-            result = None
+            new_status = None
             match status:
 
                 case "inc":
 
-                    result = choices(
+                    new_status = choices(
                         population = [
                             "inc",
                             "dec",
@@ -137,7 +176,7 @@ def task():
 
                 case "dec":
 
-                    result = choices(
+                    new_status = choices(
                         population = [
                             "inc",
                             "dec",
@@ -150,5 +189,51 @@ def task():
                         ]
                     )
 
-                # TODO case rem and None and do something with result
+                case "rem":
+
+
+                    new_status = choices(
+                        population = [
+                            "inc",
+                            "dec",
+                            "rem"
+                        ],
+                        weights = [
+                            30,
+                            30,
+                            35 + streak
+                        ]
+                    )
+
+                case None:
+
+                    new_status = choices(
+                        population = [
+                            "inc",
+                            "dec",
+                            "rem"
+                        ],
+                        weights = [
+                            30,
+                            30,
+                            35
+                        ]
+                    )
+            amt = randint(1,3)
+            match new_status:
+                case "dec":
+                    amt *= -1
+                case "rem":
+                    amt *= 0
+            if status == new_status:
+                add_streak(username, amt)
+            else:
+                add_streak(username,-streak)
+
+            change_status(username, new_status)
+            add_stock_value(username, amt)
+
+        time.sleep(10) # 10 seconds delay after checking each stock
+
+
 
