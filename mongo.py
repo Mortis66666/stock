@@ -65,7 +65,9 @@ def sign_up(username, password):
         "stock_value": 50,
         "status": None,
         "streak": 0,
-        "stock_left": 100
+        "stock_left": 100,
+        "last_refresh": 0,
+        "last_claim": 0
     }
 
     profiles.insert_one(post)
@@ -145,6 +147,10 @@ def get_user_info(username: str) -> dict:
     return result
 
 def task():
+
+    # Start changing stock value after 1 minute when the app starts
+
+    time.sleep(60)
 
     while True:
 
