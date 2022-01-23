@@ -53,6 +53,8 @@ def login_validator():
         print(message)
         session["login_warning"] = message
         return redirect(url_for('login'))
+    session["login_warning"] = "Please login first"
+    return redirect(url_for('login'))
 
 
 @app.route('/signup_validator', methods = ["POST", "GET"])
@@ -71,6 +73,8 @@ def signup_validator():
         print(message)
         session["signup_warning"] = message
         return redirect(url_for('signup'))
+    session["signup_warning"] = "Please sign up first"
+    return redirect(url_for('signup'))
 
 
 
