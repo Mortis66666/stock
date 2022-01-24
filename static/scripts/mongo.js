@@ -3,6 +3,10 @@ const { MongoClient } = require('mongodb');
 const db_url = process.env.MONGO_URL; // Gets the url in env
 const client = new MongoClient(db_url); // Mongoclient
 
+// Time units
+const DAY = 1000 * 60 * 60 * 24; // Day in milliseconds
+const SECONDS = 1000; // Seconds in milliseconds
+
 
 async function get_user_info (username) {
     try {
