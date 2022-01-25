@@ -37,6 +37,41 @@ def success():
 
     return render_template("success.html")
 
+@app.route('/mystocks')
+def mystocks():
+
+    # TODO render template
+    pass
+
+@app.route('/search')
+def search():
+
+    #TODO search queries?
+    pass
+
+@app.route('/leaderboard')
+def leaderboard():
+
+    # TODO render template
+    pass
+
+@app.route('/faq')
+def faq():
+
+    #TODO render template
+    pass
+
+@app.route('/profile')
+def profile():
+
+    # TODO render template and kwargs for profile
+    pass
+
+@app.route('/stock/<username>')
+def stock(username):
+
+    # TODO Get the user info and send to html
+    pass
 
 @app.route('/login_validator', methods = ["POST", "GET"])
 def login_validator():
