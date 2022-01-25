@@ -20,7 +20,35 @@
 </head>
 <body>
     
-    
+    <div id="tabs">
+        <ul class="greenFont mochi">
+            <li class="selected">
+                <a href="{{url_for('home')}}">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('mystocks')}}">
+                    My stocks
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('search')}}">
+                    Search
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('leaderboard')}}">
+                    Leaderboard
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('faq')}}">
+                    FAQ
+                </a>
+            </li>
+        </ul>
+    </div>
     <div id="profile">
         <div class="greenFont mochi" id="username">
             <i class="fas fa-user-circle"></i>
