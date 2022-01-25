@@ -28,14 +28,14 @@
         <h1 id="welcome">Welcome to stock simulator</h1>
     </div>
     
-    <div id="profile">
-        <div class="greenFont mochi" id="username">
-            <i class="fas fa-user-circle"></i>
-            {{username}}
-        </div>
-        <div class="greenFont mochi" id="coins">
-            💰{{coins}}
-        </div>
+    <div id="loginAndsignup">
+        <a href="https://mortis666stocksimulator.herokuapp.com/login">
+            <button id="loginButton">Login</button>
+        </a>
+        <a href="https://mortis666stocksimulator.herokuapp.com/signup">
+            <button id="signUpButton">Sign up</button>
+        </a>
+        
     </div>
 
     <script src="{{url_for('static',filename='scripts/index.js')}}"></script>
