@@ -11,11 +11,17 @@ body {
     font-family: 'Mochiy Pop P One', sans-serif;
 }
 
+.archivo {
+    font-family: 'Archivo Black', sans-serif;
+}
+
 #username {
 
     height: 50px;
+    border-bottom: 3px solid gold;
+    border-bottom-style: outset;
 
-    background-color: grey;
+    background-color: black;
 
     position: relative;
 
@@ -32,7 +38,7 @@ body {
 
     height: 50px;
 
-    background-color: lightslategray;
+    background-color: black;
 
     position: relative;
 
@@ -95,5 +101,33 @@ li.selected {
 }
 
 li :hover {
+    color: gold;
+}
+
+#daily {
+    background-color: black;
+
+    width: 900px;
+    height: 70px;
+
+    position: absolute;
+    top: 20%;
+
+    text-align: center;
+    padding-top: 20px;
+    font-size: 30px;
+}
+
+#daily button {
+    background-color: #08ffc1;
+    font-size: 35px;
+    text-align: center;
+    border: 1px solid;
+    width: 150px;
+    height: 47px;
+    padding: 0px;
+}
+
+#daily button:hover {
     color: gold;
 }
