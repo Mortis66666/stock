@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Stock simulator</title>
+
+    <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mortis.png')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/home.css')}}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/f67e8ffd5c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div id="tabs">
+        <ul class="greenFont mochi">
+            <li>
+                <a href="{{url_for('home')}}">
+                    Home
+                </a>
+            </li>
+            <li  class="selected">
+                <a href="{{url_for('mystocks')}}">
+                    My stocks
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('search')}}">
+                    Search
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('leaderboard')}}">
+                    Leaderboard
+                </a>
+            </li>
+            <li>
+                <a href="{{url_for('faq')}}" target="_blank">
+                    FAQ
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="profile">
+        <div class="greenFont mochi" id="username">
+            <i class="fas fa-user-circle"></i>
+            {{username}}
+        </div>
+        <div class="greenFont mochi" id="coins">
+            💰{{coins}}
+        </div>
+    </div>
+
+
+
+    <script src="{{url_for('static', filename='scripts/mongo.js')}}"></script>
+</body>
+</html>

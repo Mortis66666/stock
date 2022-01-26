@@ -39,27 +39,35 @@ def success():
 
 @app.route('/mystocks')
 def mystocks():
+    if "username" not in session:
+        return redirect(url_for("login"))
+    username = session["username"]
+    infos = get_user_info(username)
 
-    # TODO render template
-    pass
+    return render_template("mystocks.html", **infos)
 
 @app.route('/search')
 def search():
+    if "username" not in session:
+        return redirect(url_for("login"))
+    username = session["username"]
+    infos = get_user_info(username)
 
-    #TODO search queries?
-    pass
+    return render_template("search.html", **infos)
 
 @app.route('/leaderboard')
 def leaderboard():
+    if "username" not in session:
+        return redirect(url_for("login"))
+    username = session["username"]
+    infos = get_user_info(username)
 
-    # TODO render template
-    pass
+    return render_template("leaderboard.html", **infos)
 
 @app.route('/faq')
 def faq():
 
-    #TODO render template
-    pass
+    return render_template("faq.html")
 
 @app.route('/profile')
 def profile():
