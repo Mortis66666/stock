@@ -146,6 +146,18 @@ def get_user_info(username: str) -> dict:
 
     return result
 
+def random_stocks():
+
+    stocks = list(profiles.find())
+    stocks = filter(lambda stock:stock["stock_left"], stocks)
+
+    ranstocks = choices(
+        stocks,
+        k = 5
+    )
+
+    return list(set(ranstocks))
+
 def task():
 
     # Start changing stock value after 1 minute when the app starts

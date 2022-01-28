@@ -67,6 +67,37 @@
             </button>
         </a>
     </div>
+    <div id="ranstocks" class="greenFont mochi">
+        <h1>
+            Random stocks:   
+        </h1>
+        <button class="archivo" id="refresh">
+            Refresh
+        </button>
+        {% for random_stock in random_stocks %}
+        <div class="stocks">
+            <div class="archivo" id="stockname">
+                {{random_stock["username"]}}<br>stock
+            </div>
+            <div class="buybutton archivo">
+                <button id="buy" class="archivo">
+                    Buy
+                </button>
+            </div>
+            <div id="amountcontroll" class="archivo">
+                <button id="dec" class="change">-</button>
+                <p id="amount">
+                    1
+                </p>
+                <button id="inc" class="change">+</button>
+            </div>
+            <p id="text" class="archivo">stock(s)<br>with</p>
+            <div id="price">
+                💰{{random_stock["stock_value"]}}
+            </div>
+        </div>
+        {%- endfor %}
+    </div>
 
 
 

@@ -53,7 +53,7 @@ def search():
     username = session["username"]
     infos = get_user_info(username)
 
-    return render_template("search.html", **infos)
+    return render_template("search.html", random_stocks = random_stocks(), **infos)
 
 @app.route('/leaderboard')
 def leaderboard():
