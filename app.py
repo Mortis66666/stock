@@ -54,7 +54,7 @@ def search():
     infos = get_user_info(username)
 
     ranstocks = random_stocks()
-
+    logging.warn(ranstocks)
     for stock in ranstocks:
         logging.warn(stock)
     return render_template("search.html", random_stocks = ranstocks, **infos)
