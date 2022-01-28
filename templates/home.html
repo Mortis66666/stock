@@ -74,28 +74,28 @@
         <button class="archivo" id="refresh">
             Refresh
         </button>
-        {% for random_stock in random_stocks %}
-        <div class="stocks">
-            <div class="archivo stockname">
-                {{random_stock["username"]}}<br>stock
+        {%- for random_stock in random_stocks %}
+            <div class="stocks">
+                <div class="archivo stockname">
+                    {{random_stock["username"]}}<br>stock
+                </div>
+                <div class="buybutton archivo">
+                    <button class="archivo buy">
+                        Buy
+                    </button>
+                </div>
+                <div class="archivo amountcontroll">
+                    <button class="change dec">-</button>
+                    <p class="amount">
+                        1
+                    </p>
+                    <button class="change inc">+</button>
+                </div>
+                <p class="archivo text">stock(s)<br>with</p>
+                <div class="price">
+                    💰{{random_stock["stock_value"]}}
+                </div>
             </div>
-            <div class="buybutton archivo">
-                <button class="archivo buy">
-                    Buy
-                </button>
-            </div>
-            <div class="archivo amountcontroll">
-                <button class="change dec">-</button>
-                <p class="amount">
-                    1
-                </p>
-                <button class="change inc">+</button>
-            </div>
-            <p class="archivo text">stock(s)<br>with</p>
-            <div class="price">
-                💰{{random_stock["stock_value"]}}
-            </div>
-        </div>
         {%- endfor %}
     </div>
 
