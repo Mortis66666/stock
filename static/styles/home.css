@@ -194,7 +194,7 @@ li :hover {
     background-color: #9C4E00;
 }
 
-#buy {
+.buy {
     position: relative;
     top: 20px;
     left: 50%;
@@ -207,7 +207,7 @@ li :hover {
     font-size: 20px;
 }
 
-#amountcontroll {
+.amountcontroll {
     position: relative;
     top: 30px;
     color: white;
@@ -232,7 +232,7 @@ li :hover {
 }
 
 
-#amount {
+.amount {
     color: black;
     background-color: #08ffc1;
     border: 3px solid gold;
@@ -248,17 +248,17 @@ li :hover {
     padding: 0px;
 }
 
-#dec {
+.dec {
     position: relative;
     right: 10px;
 }
 
-#inc {
+.inc {
     position: relative;
     left: 10px;
 }
 
-#text {
+.text {
     position: relative;
     left: 50%;
     transform: translate(-50%);
@@ -267,7 +267,7 @@ li :hover {
     text-align: center;
 }
 
-#price {
+.price {
     border: 3px solid gold;
     border-style: outset;
 
