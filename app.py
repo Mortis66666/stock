@@ -30,7 +30,7 @@ def home():
     username = session["username"]
     infos = get_user_info(username)
 
-    return render_template("home.html", random_stocks = random_stocks(), **infos)
+    return render_template("home.html", **infos)
 
 @app.route('/success') # success route
 def success():

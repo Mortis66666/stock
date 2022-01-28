@@ -68,7 +68,8 @@ def sign_up(username, password):
         "streak": 0,
         "stock_left": 100,
         "last_refresh": 0,
-        "last_claim": 0
+        "last_claim": 0,
+        "random_stocks": random_stocks()
     }
 
     profiles.insert_one(post)
