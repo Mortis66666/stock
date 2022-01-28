@@ -5,6 +5,7 @@ from typing import Tuple, Union
 import logging
 from random import choices, randint
 import time
+from iteration_utilities import unique_everseen
 
 
 db_url = os.environ["MONGO_URL"]
@@ -156,7 +157,7 @@ def random_stocks():
         k = 5
     )
 
-    return [*map(dict,{tuple(stock.items()) for stock in ranstocks})]
+    return list(unique_everseen(ranstocks))
 
 def task():
 
