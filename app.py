@@ -30,7 +30,7 @@ def home():
     username = session["username"]
     infos = get_user_info(username)
 
-    return render_template("home.html", **infos)
+    return render_template("home.html", random_stocks = random_stocks(), **infos)
 
 @app.route('/success') # success route
 def success():
@@ -53,11 +53,7 @@ def search():
     username = session["username"]
     infos = get_user_info(username)
 
-    ranstocks = random_stocks()
-    logging.warn(ranstocks)
-    for stock in ranstocks:
-        logging.warn(stock)
-    return render_template("search.html", random_stocks = ranstocks, **infos)
+    return render_template("search.html", **infos)
 
 @app.route('/leaderboard')
 def leaderboard():
