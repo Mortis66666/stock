@@ -186,7 +186,7 @@ li :hover {
     top: 30px;
 }
 
-.stocks #stockname {
+.stocks .stockname {
     color: gold;
     text-align: center;
     width: 230px;
