@@ -156,7 +156,7 @@ def random_stocks():
         k = 5
     )
 
-    return list(ranstocks)
+    return [*map(dict,{tuple(stock.items()) for stock in ranstocks})]
 
 def task():
 
