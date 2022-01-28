@@ -149,14 +149,14 @@ def get_user_info(username: str) -> dict:
 def random_stocks():
 
     stocks = list(profiles.find())
-    stocks = filter(lambda stock:stock["stock_left"], stocks)
+    stocks = list(filter(lambda stock:stock["stock_left"], stocks))
 
     ranstocks = choices(
         stocks,
         k = 5
     )
 
-    return list(set(ranstocks))
+    return list(ranstocks)
 
 def task():
 
