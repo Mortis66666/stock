@@ -11,7 +11,8 @@ const SECONDS = 1000; // Seconds in milliseconds
 async function get_user_info (username) {
     try {
         await client.connect() // Connect to the client
-        var profiles = client.db("stocks").collection("profiles"); // Gets collection "profile"
+        const stocks = client.db("stocks");
+        const profiles = stocks.collection("profiles");
         var result = await profiles.findOne(
             {
                 "username": username
@@ -21,7 +22,8 @@ async function get_user_info (username) {
     }
 
     catch (error) {
-        return null;
+        console.error(error)
+        return error;
     }
 
     finally {
@@ -31,10 +33,11 @@ async function get_user_info (username) {
 
 async function add_coins (username, amount) {
     try {
-        await client.connect()
-        var profiles = client.db("stocks").collection("profiles");
+        await client.connect();
+        const stocks = client.db("stocks");
+        const profiles = stocks.collection("profiles");
 
-        profiles.updateOne(
+        await profiles.updateOne(
             {
                 "username": username
             },
@@ -43,11 +46,16 @@ async function add_coins (username, amount) {
                     "coins": amount
                 }
             }
-        )
+        );
 
     }
 
+    catch (error) {
+        console.error(error);
+        return error;
+    }
+
     finally {
-        await client.close()
+        await client.close();
     }
 }
