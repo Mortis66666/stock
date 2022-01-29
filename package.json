@@ -5,10 +5,9 @@
     "author": "Mortis_666",
     "license": "MIT",
     "dependencies": {
-      "mongodb": "^4.3"
+        "mongodb": "^4.3"
     },
     "engines": {
-      "node": "16.13.1"
+        "node": "16.13.1"
     }
-  }
-  
+}  
