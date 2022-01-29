@@ -69,7 +69,7 @@ def sign_up(username, password):
         "stock_left": 100,
         "last_refresh": 0,
         "last_claim": 0,
-        "random_stocks": random_stocks()
+        "random_stocks": list(random_stocks())
     }
 
     profiles.insert_one(post)
@@ -158,7 +158,8 @@ def random_stocks():
         k = 5
     )
 
-    return list(unique_everseen(ranstocks))
+    for random_stock in unique_everseen(ranstocks):
+        yield random_stock["username"], random_stock["stock_value"]
 
 def task():
 

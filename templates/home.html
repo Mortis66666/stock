@@ -74,26 +74,26 @@
         <button class="archivo" id="refresh">
             Refresh
         </button>
-        {%- for random_stock in random_stocks %}
+        {%- for name, price in random_stocks %}
             <div class="stocks">
                 <div class="archivo stockname">
-                    {{random_stock["username"]}}<br>stock
+                    {{name]}}<br>stock
                 </div>
                 <div class="buybutton archivo">
-                    <button class="archivo buy">
+                    <button class="archivo buy" ondblclick="buy('{{name}}')">
                         Buy
                     </button>
                 </div>
                 <div class="archivo amountcontroll">
-                    <button class="change dec">-</button>
-                    <p class="amount">
+                    <button class="change dec" onclick="increase('{{name}}')">-</button>
+                    <p class="amount" id="amount{{name}}">
                         1
                     </p>
-                    <button class="change inc">+</button>
+                    <button class="change inc" onclick="decrease('{{name}}')">+</button>
                 </div>
                 <p class="archivo text">stock(s)<br>with</p>
-                <div class="price">
-                    💰{{random_stock["stock_value"]}}
+                <div class="price" id="price{{name}}">
+                    💰{{price}}
                 </div>
             </div>
         {%- endfor %}
@@ -102,5 +102,6 @@
 
 
     <script src="{{url_for('static', filename='scripts/mongo.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/home.js')}}"></script>
 </body>
 </html>
