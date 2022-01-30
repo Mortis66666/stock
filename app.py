@@ -122,7 +122,7 @@ def signup_validator():
     return redirect(url_for('signup'))
 
 
-@app.route('buy')
+@app.route('/buy')
 def buy():
 
     form = request.form
