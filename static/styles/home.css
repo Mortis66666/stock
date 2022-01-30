@@ -15,6 +15,10 @@ body {
     font-family: 'Archivo Black', sans-serif;
 }
 
+.invisible {
+    display: none;
+}
+
 #username {
 
     height: 50px;

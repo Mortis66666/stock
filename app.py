@@ -81,6 +81,8 @@ def stock(username):
     # TODO Get the user info and send to html
     pass
 
+
+# Routes for verifiying user data
 @app.route('/login_validator', methods = ["POST", "GET"])
 def login_validator():
 
@@ -119,6 +121,23 @@ def signup_validator():
     session["signup_warning"] = "Please sign up first"
     return redirect(url_for('signup'))
 
+
+@app.route('buy')
+def buy():
+
+    form = request.form
+    
+    buyer = session["username"]
+    stock_owner = form["user"]
+    amount = int(form["amount"])
+    price = amount * get_user_info(stock_owner)["stock_value"]
+
+    add_bal(buyer, -price)
+    add_stock(buyer, stock_owner, amount)
+
+    return redirect(url_for('home'))
+
+    
 
 
 

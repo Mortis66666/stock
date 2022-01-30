@@ -75,27 +75,30 @@
             Refresh
         </button>
         {%- for name, price in random_stocks %}
-            <div class="stocks">
-                <div class="archivo stockname">
-                    {{name}}<br>stock
+            <form action="{{url_for('buy')}}" method="post">
+                <div class="invisible">
+                    <input type="hidden" name="user" value="{{user}}">
                 </div>
-                <div class="buybutton archivo">
-                    <button class="archivo buy" ondblclick="buy('{{name}}')">
-                        Buy
-                    </button>
+                <div class="stocks">
+                    <div class="archivo stockname">
+                        {{name}}<br>stock
+                    </div>
+                    <div class="buybutton archivo">
+                        <button class="archivo buy" type="submit">
+                            Buy
+                        </button>
+                    </div>
+                    <div class="archivo amountcontroll">
+                        <button class="change dec" onclick="decrease('{{name}}')">-</button>
+                        <input name="amount" class="amount" id="amount{{name}}" value="1" readonly>
+                        <button class="change inc" onclick="increase('{{name}}')">+</button>
+                    </div>
+                    <p class="archivo text">stock(s)<br>with</p>
+                    <div class="price" id="price{{name}}">
+                        💰{{price}}
+                    </div>
                 </div>
-                <div class="archivo amountcontroll">
-                    <button class="change dec" onclick="decrease('{{name}}')">-</button>
-                    <p class="amount" id="amount{{name}}">
-                        1
-                    </p>
-                    <button class="change inc" onclick="increase('{{name}}')">+</button>
-                </div>
-                <p class="archivo text">stock(s)<br>with</p>
-                <div class="price" id="price{{name}}">
-                    💰{{price}}
-                </div>
-            </div>
+            </form>
         {%- endfor %}
     </div>
 
