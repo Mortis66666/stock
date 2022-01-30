@@ -252,6 +252,10 @@ li :hover {
     padding: 0px;
 }
 
+.amount input {
+    all: unset;
+}
+
 .dec {
     position: relative;
     right: 10px;
