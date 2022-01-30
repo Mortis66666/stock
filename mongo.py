@@ -1,4 +1,3 @@
-from hashlib import new
 from pymongo import MongoClient
 import os
 from typing import Tuple, Union
