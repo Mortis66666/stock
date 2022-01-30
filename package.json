@@ -1,0 +1,13 @@
+{
+    "name": "stocksimulator",
+    "version": "1.0.0",
+    "description": "First ever website project ",
+    "author": "Mortis_666",
+    "license": "MIT",
+    "dependencies": {
+        "mongodb": "^4.3"
+    },
+    "engines": {
+        "node": "16.13.1"
+    }
+}
