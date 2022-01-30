@@ -254,6 +254,8 @@ li :hover {
 
 .amount input {
     all: unset;
+    width: 60px;
+    text-align: center;
 }
 
 .dec {
