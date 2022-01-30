@@ -90,7 +90,9 @@
                     </div>
                     <div class="archivo amountcontroll">
                         <button class="change dec" onclick="decrease('{{name}}')">-</button>
-                        <input name="amount" class="amount" id="amount{{name}}" value="1" readonly>
+                        <p class="amount">
+                            <input type="text" name="amount" id="amount{{name}}" value="1" readonly>
+                        </p>
                         <button class="change inc" onclick="increase('{{name}}')">+</button>
                     </div>
                     <p class="archivo text">stock(s)<br>with</p>
@@ -102,9 +104,6 @@
         {%- endfor %}
     </div>
 
-
-
-    <script src="{{url_for('static', filename='scripts/mongo.js')}}"></script>
     <script src="{{url_for('static', filename='scripts/home.js')}}"></script>
 </body>
 </html>
