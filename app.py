@@ -146,10 +146,12 @@ def buy():
 
             return redirect(url_for('home'))
 
-        except:
+        except Exception as e:
+            app.logger.error(e)
             return redirect(url_for("oops"))
     
     else:
+        app.logger.warning("Wrong method")
         return redirect(url_for("oops"))
 
     
