@@ -81,6 +81,11 @@ def stock(username):
     # TODO Get the user info and send to html
     pass
 
+@app.route('/oops')
+def oops():
+
+    return render_template("oops.html")
+
 
 # Routes for verifiying user data
 @app.route('/login_validator', methods = ["POST", "GET"])
@@ -125,17 +130,27 @@ def signup_validator():
 @app.route('/buy')
 def buy():
 
-    form = request.form
+    if request.method == "GET":
+
+        try:
+
+            form = request.args
+            
+            buyer = session["username"]
+            stock_owner = form["user"]
+            amount = int(form["amount"])
+            price = amount * get_user_info(stock_owner)["stock_value"]
+
+            add_bal(buyer, -price)
+            add_stock(buyer, stock_owner, amount)
+
+            return redirect(url_for('home'))
+
+        except:
+            return redirect(url_for("oops"))
     
-    buyer = session["username"]
-    stock_owner = form["user"]
-    amount = int(form["amount"])
-    price = amount * get_user_info(stock_owner)["stock_value"]
-
-    add_bal(buyer, -price)
-    add_stock(buyer, stock_owner, amount)
-
-    return redirect(url_for('home'))
+    else:
+        return redirect(url_for("oops"))
 
     
 
