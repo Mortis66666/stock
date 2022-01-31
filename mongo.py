@@ -146,6 +146,7 @@ def add_stock(buyer, stock_owner, amount):
         )
 
     profiles.update_one(
+        buyer_info,
         {
             "$set": {
                 "stocks": stocks
