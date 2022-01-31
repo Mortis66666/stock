@@ -6,7 +6,7 @@ function increase (name) {
     const amount = parseInt(element.innerText);
 
     element.innerText = amount + 1;
-    price.innerText = (parseInt(price.innerText) / amount) * (amount + 1);
+    price.innerText = (parseInt(price.innerText.slice(1)) / amount) * (amount + 1);
 };
 
 function decrease (name) {
@@ -25,5 +25,5 @@ function decrease (name) {
 function buy (stock_owner) {
 
     const amount = document.getElementById("amount"+stock_owner).innerText;
-    window.location.href = `https://mortis666stocksimulator.herokuapp.com/buy?name=${stock_owner}&amount=${amount}`;
+    window.location.href = `https://mortis666stocksimulator.herokuapp.com/buy?user=${stock_owner}&amount=${amount}`;
 };
