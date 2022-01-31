@@ -128,7 +128,7 @@ def add_streak(username: str, amount: int) -> None:
 def add_stock(buyer, stock_owner, amount):
 
     buyer_info = get_user_info(buyer)
-    stocks = buyer_info["stocks"]
+    stocks = list(buyer_info["stocks"])
 
     inserted = False
 
@@ -136,6 +136,7 @@ def add_stock(buyer, stock_owner, amount):
         if stock["name"] == stock_owner:
             stock["amount"] += amount
             inserted = True
+            break
     
     if not inserted:
         stocks.append(
