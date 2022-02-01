@@ -30,7 +30,7 @@ def home():
     username = session["username"]
     infos = get_user_info(username)
 
-    return render_template("home.html", **infos)
+    return render_template("home.html", message=session.get("homemsg", ""), **infos)
 
 @app.route('/success') # success route
 def success():
@@ -141,12 +141,19 @@ def buy():
             amount = int(form["amount"])
             price = amount * get_user_info(stock_owner)["stock_value"]
             buyer_bal = get_user_info(buyer)["coins"]
+            stock_left = get_user_info(stock_owner)["stock_left"]
 
-            if buyer_bal > price:
+            if buyer_bal > price and amount < stock_left:
                 add_bal(buyer, -price)
                 add_stock(buyer, stock_owner, amount)
-
-            return redirect(url_for('home'))
+                session["homemsg"] = ""
+                return redirect(url_for('home'))
+            elif buyer_bal < price:
+                session["homemsg"] = "Not enough coins"
+                return redirect(url_for("home"))
+            else:
+                session["homemsg"] = f"{stock_owner} stock not enough..."
+                return redirect(url_for("home"))
 
         except Exception as e:
             app.logger.error(e)

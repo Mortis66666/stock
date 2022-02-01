@@ -1,3 +1,9 @@
+const message = document.getElementById("message").value;
+
+if (message) {
+    alert(message);
+};
+
 function increase (name) {
 
     const id = "amount"+name;

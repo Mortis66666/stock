@@ -128,6 +128,7 @@ def add_streak(username: str, amount: int) -> None:
 def add_stock(buyer, stock_owner, amount):
 
     buyer_info = get_user_info(buyer)
+    stock_owner_info = get_user_info(stock_owner)
     stocks = list(buyer_info["stocks"])
 
     inserted = False
@@ -151,6 +152,15 @@ def add_stock(buyer, stock_owner, amount):
         {
             "$set": {
                 "stocks": stocks
+            }
+        }
+    )
+
+    profiles.update_one(
+        stock_owner_info,
+        {
+            "$inc": {
+                "stock_left": -amount
             }
         }
     )

@@ -102,6 +102,8 @@
         {%- endfor %}
     </div>
 
+    <input class="message" id="message" type="hidden" style="display: none;" value="{{message}}">
+
     <script src="{{url_for('static', filename='scripts/home.js')}}"></script>
 </body>
 </html>
