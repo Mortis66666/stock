@@ -180,8 +180,8 @@ li :hover {
 .stocks {
     background-color: #2e2b2b;
 
-    height: 300px;
-    width: 230px;
+    height: 345px;
+    width: 18.19%;
     float: left;
 
     border-left: 20px solid black;
@@ -193,7 +193,7 @@ li :hover {
 .stocks .stockname {
     color: gold;
     text-align: center;
-    width: 230px;
+    width: 100%;
     font-size: 22px;
     background-color: #9C4E00;
 }
@@ -288,4 +288,12 @@ li :hover {
     left: 50%;
     transform: translate(-50%);
     margin: 0px;
+}
+
+.stock-left {
+    color: gold;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    background-color: #9C4E00;
 }

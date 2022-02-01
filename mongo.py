@@ -188,7 +188,7 @@ def random_stocks():
     )
 
     for random_stock in unique_everseen(ranstocks):
-        yield random_stock["username"], random_stock["stock_value"]
+        yield random_stock["username"], random_stock["stock_value"], random_stocks["stock_left"]
 
 def task():
 

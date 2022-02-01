@@ -74,7 +74,7 @@
         <button class="archivo" id="refresh">
             Refresh
         </button>
-        {%- for name, price in random_stocks %}
+        {%- for name, price, stock_left in random_stocks %}
             <div class="stocks">
                 <div class="archivo stockname">
                     {{name}}<br>stock
@@ -94,6 +94,9 @@
                 <p class="archivo text">stock(s)<br>with</p>
                 <div class="price" id="price{{name}}">
                     💰{{price}}
+                </div>
+                <div class="archivo stock-left">
+                    Stock left:<br>100
                 </div>
             </div>
         {%- endfor %}

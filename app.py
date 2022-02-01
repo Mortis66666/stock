@@ -140,9 +140,11 @@ def buy():
             stock_owner = form["user"]
             amount = int(form["amount"])
             price = amount * get_user_info(stock_owner)["stock_value"]
+            buyer_bal = get_user_info(buyer)["coins"]
 
-            add_bal(buyer, -price)
-            add_stock(buyer, stock_owner, amount)
+            if buyer_bal > price:
+                add_bal(buyer, -price)
+                add_stock(buyer, stock_owner, amount)
 
             return redirect(url_for('home'))
 
