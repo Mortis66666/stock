@@ -6,7 +6,7 @@ function increase (name) {
     const amount = parseInt(element.innerText);
 
     element.innerText = amount + 1;
-    price.innerText = "💰" + ((parseInt(price.innerText.slice(3)) / amount) * (amount + 1));
+    price.innerText = "💰" + ((parseInt(price.innerText.replace("💰", "")) / amount) * (amount + 1));
 };
 
 function decrease (name) {
@@ -18,7 +18,7 @@ function decrease (name) {
 
     if (amount > 1) {
         element.innerText = amount - 1;
-        price.innerText = "💰" + ((parseInt(price.innerText.slice(3)) / amount) * (amount - 1));
+        price.innerText = "💰" + ((parseInt(price.innerText.replace("💰", "")) / amount) * (amount - 1));
     }
 };
 
