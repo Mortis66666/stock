@@ -195,7 +195,7 @@ def refresh():
                 }
             )
 
-            session.pop("homemsg")
+            session.pop("homemsg", None)
 
         else:
             session["homemsg"] = f"You still need to wait for {diff} seconds to refresh"
