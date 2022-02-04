@@ -202,7 +202,8 @@ def refresh():
 
         return redirect(url_for('home'))
 
-    except:
+    except Exception as error:
+        app.logger.error(error)
         return redirect(url_for('login'))
 
 
