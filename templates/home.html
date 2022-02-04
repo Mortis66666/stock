@@ -74,7 +74,7 @@
         <button class="archivo" id="refresh">
             Refresh
         </button>
-        {%- for name, price, stock_left in random_stocks %}
+        {%- for name in random_stocks %}
             <div class="stocks">
                 <div class="archivo stockname">
                     {{name}}<br>stock
@@ -93,10 +93,10 @@
                 </div>
                 <p class="archivo text">stock(s)<br>with</p>
                 <div class="price" id="price{{name}}">
-                    💰{{price}}
+                    💰{{get_user_info(name)["stock_value"]}}
                 </div>
                 <div class="archivo stock-left">
-                    Stock left:<br>100
+                    Stock left:<br>{{get_user_info(name)["stock_left"]}}
                 </div>
             </div>
         {%- endfor %}
