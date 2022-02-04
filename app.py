@@ -4,7 +4,7 @@ import secrets
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex()
-
+app.jinja_env.globals.update(get_user_info=get_user_info)
 
 # Routing
 @app.route('/') # index route
