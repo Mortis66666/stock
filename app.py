@@ -173,12 +173,12 @@ def refresh():
         info = get_user_info(user)
         last_refresh = info["last_refresh"]
 
-        now = time.time()
+        now = int(time.time())
         diff = now - last_refresh
 
         if diff > 10:
             profiles.update_one(
-                info,
+                info.copy(),
                 {
                     "$set": {
                         "random_stocks": [*random_stocks()]
@@ -187,7 +187,7 @@ def refresh():
             )
 
             profiles.update_one(
-                info,
+                info.copy(),
                 {
                     "$set": {
                         "last_refresh": now
