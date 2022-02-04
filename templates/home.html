@@ -71,9 +71,11 @@
         <h1>
             Random stocks:   
         </h1>
-        <button class="archivo" id="refresh">
-            Refresh
-        </button>
+        <a href="{{url_for('refresh')}}">
+            <button class="archivo" id="refresh">
+                Refresh
+            </button>
+        </a>
         {%- for name in random_stocks %}
             <div class="stocks">
                 <div class="archivo stockname">
