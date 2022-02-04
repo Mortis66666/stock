@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template, request, url_for, session
 from mongo import *
 import secrets
+import time
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex()
@@ -164,7 +165,45 @@ def buy():
         return redirect(url_for("oops"))
 
     
+@app.route('/refresh')
+def refresh():
 
+    try:
+        user = session["username"]
+        info = get_user_info(user)
+        last_claim = info["last_claim"]
+
+        now = time.time()
+        diff = now - last_claim
+
+        if diff > 10:
+            profiles.update_one(
+                info,
+                {
+                    "$set": {
+                        "random_stocks": [*random_stocks()]
+                    }
+                }
+            )
+
+            profiles.update_one(
+                info,
+                {
+                    "$set": {
+                        "last_claim": now
+                    }
+                }
+            )
+
+            session.pop("homemsg")
+
+        else:
+            session["homemsg"] = f"You still need to wait for {diff} seconds to refresh"
+
+        return redirect(url_for('home'))
+
+    except:
+        return redirect(url_for('login'))
 
 
 # Error handling
