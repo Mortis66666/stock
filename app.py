@@ -171,10 +171,10 @@ def refresh():
     try:
         user = session["username"]
         info = get_user_info(user)
-        last_claim = info["last_claim"]
+        last_refresh = info["last_refresh"]
 
         now = time.time()
-        diff = now - last_claim
+        diff = now - last_refresh
 
         if diff > 10:
             profiles.update_one(
@@ -190,7 +190,7 @@ def refresh():
                 info,
                 {
                     "$set": {
-                        "last_claim": now
+                        "last_refresh": now
                     }
                 }
             )
