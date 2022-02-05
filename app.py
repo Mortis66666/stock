@@ -288,5 +288,5 @@ def page_not_found(error):
     return render_template("page_not_found.html"), 404
 
 if __name__ == "__main__":
-    Thread(target=task).start()
     Thread(target=app.run).start()
+    Thread(target=task).start()
