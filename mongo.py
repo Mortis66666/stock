@@ -229,6 +229,7 @@ def task():
             status = result["status"]
             streak = result["streak"]
             username = result["username"]
+            stock_left = result["stock_left"]
             
             new_status = None
             match status:
@@ -242,8 +243,8 @@ def task():
                             "rem"
                         ],
                         weights = [
-                            30 + streak,
-                            20,
+                            30 + streak + (100-stock_left)/3,
+                            20 + stock_left/100,
                             35
                         ]
                     )
@@ -257,8 +258,8 @@ def task():
                             "rem"
                         ],
                         weights = [
-                            20,
-                            30 + streak,
+                            20 + (100-stock_left)/3,
+                            30 + streak + stock_left/100,
                             35
                         ]
                     )
@@ -273,8 +274,8 @@ def task():
                             "rem"
                         ],
                         weights = [
-                            30,
-                            30,
+                            30 + (100-stock_left)/3,
+                            30 + stock_left/100,
                             35 + streak
                         ]
                     )
@@ -288,8 +289,8 @@ def task():
                             "rem"
                         ],
                         weights = [
-                            30,
-                            30,
+                            30 + (100-stock_left)/3,
+                            30 + stock_left/100,
                             35
                         ]
                     )
