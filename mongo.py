@@ -214,6 +214,7 @@ def task():
 
     # Start changing stock value after 1 minute when the app starts
 
+    print("Task started!")
     time.sleep(60)
 
     while True:
