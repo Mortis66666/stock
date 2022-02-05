@@ -61,7 +61,7 @@
     </div>
     <div id="daily" class="greenFont mochi">
         Claim your daily coins!
-        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">
+        <a href="{{url_for('claim')}}">
             <button class="archivo">
                 Claim
             </button>
@@ -82,7 +82,7 @@
                     {{name}}<br>stock
                 </div>
                 <div class="buybutton archivo">
-                    <button class="archivo buy" ondblclick="buy('{{name}}')">
+                    <button class="archivo buy" onclick="buy('{{name}}')">
                         Buy
                     </button>
                 </div>

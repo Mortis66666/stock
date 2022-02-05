@@ -193,6 +193,53 @@ def refresh():
         return redirect(url_for('login'))
 
 
+@app.route('/claim')
+def claim():
+
+    try:
+        user = session["username"]
+        info = get_user_info(user)
+        last_claim = info["last_claim"]
+
+        now = time.time()
+        diff = now - last_claim
+
+        if diff > 60*60*24:
+
+            add_bal(user, 100)
+            set_to(user, "last_claim", now)
+
+            session["homemsg"] = "Daily claimed!\nYou received 100 coins"
+        
+        else:
+            diff = round(diff)
+
+            hours = diff % 3600
+            diff //= 3600
+
+            minutes = diff % 60
+            diff //= 60
+
+            seconds = diff
+
+            message_template = "You need to wait for {} to claim your daily"
+            wait = []
+
+            if hours:
+                wait.append(f"{hours} hour{'s' if hours>1 else ''}")
+            if minutes:
+                wait.append(f"{minutes} minute{'s' if minutes>1 else ''}")
+            if seconds:
+                wait.append(f"{seconds} second{'s' if seconds>1 else ''}")
+
+            session["homemsg"] = message_template.format(", ".join(wait))
+        
+        return redirect(url_for('home'))
+
+    except KeyError:
+        return redirect(url_for('login'))
+
+
 # Error handling
 @app.errorhandler(404)
 def page_not_found(error):
