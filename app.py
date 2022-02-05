@@ -192,6 +192,8 @@ def sell():
             else:
                 session["msmsg"] = "You don't have so much stocks!"
 
+            return redirect(url_for('mystocks'))
+
 
         except Exception as e:
             app.logger.error(e)
