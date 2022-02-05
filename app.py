@@ -176,23 +176,15 @@ def refresh():
         now = time.time()
         diff = now - last_refresh
 
-        app.logger.debug(f"Now: {now}")
-        app.logger.debug(f"Diff: {diff}")
-
         if diff > 10:
-            app.logger.debug(f"Triggered if diff > 10:")
-            
-            e = set_to(user, "random_stocks", list(random_stocks()))
-            app.logger.debug(f"Changed random_stocks: {e}")
 
-            e = set_to(user, "last_refresh", now)
-            app.logger.debug(f"Last_refresh changed {e}")
-            
+            set_to(user, "random_stocks", list(random_stocks()))
+            set_to(user, "last_refresh", now)        
 
             session.pop("homemsg", None)
 
         else:
-            session["homemsg"] = f"You still need to wait for {diff} seconds to refresh"
+            session["homemsg"] = f"You still need to wait for {round(diff)} seconds to refresh"
 
         return redirect(url_for('home'))
 
