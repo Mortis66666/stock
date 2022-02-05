@@ -63,6 +63,6 @@ body {
     bottom: 10px;
 }
 
-button:hover {
+a:hover {
     color: gold;
 }

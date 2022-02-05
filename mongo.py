@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 import os
-from typing import Tuple, Union
+from typing import Any, Tuple, Union
 import logging
 from random import choices, randint
 import time
@@ -125,7 +125,7 @@ def add_streak(username: str, amount: int) -> None:
         }
     )
 
-def add_stock(buyer, stock_owner, amount):
+def add_stock(buyer: str, stock_owner: str, amount: int) -> None:
 
     buyer_info = get_user_info(buyer)
     stock_owner_info = get_user_info(stock_owner)
@@ -177,6 +177,20 @@ def change_status(username: str, new_status: str) -> None:
         }
     )
 
+def set_to(username: str, key: str, value: Any) -> int:
+    res =  profiles.update_one(
+        {
+            "username": username
+        },
+        {
+            "$set": {
+                key: value
+            }
+        }
+    )
+
+    return res.matched_count
+
 def get_user_info(username: str) -> dict:
     
     result = profiles.find_one(
@@ -185,7 +199,7 @@ def get_user_info(username: str) -> dict:
         }
     )
 
-    return result
+    return dict(**result)
 
 def random_stocks():
 

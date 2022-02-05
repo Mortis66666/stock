@@ -173,27 +173,21 @@ def refresh():
         info = get_user_info(user)
         last_refresh = info["last_refresh"]
 
-        now = int(time.time())
+        now = time.time()
         diff = now - last_refresh
 
-        if diff > 10:
-            profiles.update_one(
-                info.copy(),
-                {
-                    "$set": {
-                        "random_stocks": [*random_stocks()]
-                    }
-                }
-            )
+        app.logger.debug(f"Now: {now}")
+        app.logger.debug(f"Diff: {diff}")
 
-            profiles.update_one(
-                info.copy(),
-                {
-                    "$set": {
-                        "last_refresh": now
-                    }
-                }
-            )
+        if diff > 10:
+            app.logger.debug(f"Triggered if diff > 10:")
+            
+            e = set_to(user, "random_stocks", list(random_stocks()))
+            app.logger.debug(f"Changed random_stocks: {e}")
+
+            e = set_to(user, "last_refresh", now)
+            app.logger.debug(f"Last_refresh changed {e}")
+            
 
             session.pop("homemsg", None)
 
