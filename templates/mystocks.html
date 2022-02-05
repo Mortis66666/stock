@@ -58,9 +58,35 @@
             💰{{coins}}
         </div>
     </div>
+    <div class="stocks">
+        <div class="stock">
+            <div class="archivo stockname">
+                Mortis_666<br>stock
+            </div>
+            <div class="buybutton archivo">
+                <button class="archivo buy" onclick="buy('{{name}}')">
+                    Sell
+                </button>
+            </div>
+            <div class="archivo amountcontroll">
+                <button class="change dec" onclick="decrease('{{name}}')">-</button>
+                <p class="amount" id="amount{{name}}">
+                    1
+                </p>
+                <button class="change inc" onclick="increase('{{name}}')">+</button>
+            </div>
+            <p class="archivo text greenFont">stock(s)<br>to get</p>
+            <div class="price archivo" id="price{{name}}">
+                💰50
+            </div>
+            <div class="archivo stock-left">
+                Stock left:<br>100
+            </div>
+        </div>
+    </div>
 
 
 
-    <script src="{{url_for('static', filename='scripts/mongo.js')}}"></script>
+    <script src="{{url_for('static', filename='scripts/mystocks.js')}}"></script>
 </body>
 </html>

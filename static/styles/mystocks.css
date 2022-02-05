@@ -1,0 +1,230 @@
+body {
+    background-color: #2e2b2b;
+}
+
+.greenFont, a {
+    color: #00FF73;
+    text-decoration: none;
+}
+
+.mochi {
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+.archivo {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+#username {
+
+    height: 50px;
+    border-bottom: 3px solid gold;
+    border-bottom-style: outset;
+
+    background-color: black;
+
+    position: relative;
+
+    top: 0%;
+    left: 50%;
+
+    transform: translate(-50%, 0%);
+
+    font-size: 30px;
+    text-align: center;
+}
+
+#coins {
+
+    height: 50px;
+
+    background-color: black;
+
+    position: relative;
+
+    top: 0%;
+    left: 50%;
+
+    transform: translate(-50%, 0%);
+
+    text-align: center;
+    font-size: 30px;
+
+}
+
+#profile {
+    border: 5px solid gold;
+    border-style: outset;
+
+    width: 300px;
+    height: 100px;
+
+    position: absolute;
+    top: 2%;
+    left: 89%;
+
+    transform: translate(-50%, 0%);
+}
+
+#tabs {
+    background-color: black;
+
+    width: 1100px;
+    height: 70px;
+
+    position: absolute;
+
+    top: 5%;
+
+}
+
+ul {
+    list-style-type: none;
+
+    position: absolute;
+    top: 0%;
+
+    transform: translate(0%, -30%);
+}
+
+li {
+    width: 180px;
+
+    float: left;
+    font-size: 30px;
+    padding: 10px;
+    text-align: center;
+}
+
+li.selected {
+    border-bottom: 3px solid yellow;
+}
+
+li :hover {
+    color: gold;
+}
+
+.stocks {
+    position: absolute;
+    top: 200px;
+}
+
+.stock {
+    background-color: black;
+    height: 300px;
+    width: 270px;
+
+    border: 50px solid #2e2b2b;
+    float: left;
+}
+
+.stock .stockname {
+    color: gold;
+    text-align: center;
+    width: 100%;
+    font-size: 22px;
+    background-color: #9C4E00;
+}
+
+.buy {
+    position: relative;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 100px;
+    height: 45px;
+    border: 3px solid gold;
+    border-style: outset;
+    background-color: #08ffc1;
+    font-size: 20px;
+}
+
+.amountcontroll {
+    position: relative;
+    top: 30px;
+    color: white;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.change {
+    font-weight: bold;
+    font-size: 15px;
+
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+
+    background-color: #08ffc1;
+    border: 3px solid gold;
+    border-style: outset;
+    text-align: center;
+}
+
+
+.amount {
+    color: black;
+    background-color: #08ffc1;
+    border: 3px solid gold;
+    border-style: outset;
+    text-align: center;
+
+    position: relative;
+
+    width: 60px;
+    height: 30px;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.dec {
+    position: relative;
+    right: 10px;
+}
+
+.inc {
+    position: relative;
+    left: 10px;
+}
+
+.text {
+    position: relative;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 200px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.price {
+    border: 3px solid gold;
+    border-style: outset;
+
+    background-color: grey;
+    color: black;
+    width: 80px;
+    height: 30px;
+
+    text-align: center;
+    font-size: 15px;
+
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 0px;
+}
+
+.stock-left {
+    position: relative;
+    top: 16px;
+    color: gold;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    background-color: #9C4E00;
+}
