@@ -244,7 +244,7 @@ def task():
                             20 + stock_left/100,
                             35
                         ]
-                    )
+                    )[0]
 
                 case "dec":
 
