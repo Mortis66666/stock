@@ -1,11 +1,14 @@
 from flask import Flask, redirect, render_template, request, url_for, session
 from mongo import *
+from threading import Thread
 import secrets
 import time
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex()
 app.jinja_env.globals.update(get_user_info=get_user_info)
+
+stock_task = Thread(target=task)
 
 # Routing
 @app.route('/') # index route
@@ -286,4 +289,5 @@ def page_not_found(error):
     return render_template("page_not_found.html"), 404
 
 if __name__ == "__main__":
+    stock_task.start()
     app.run()

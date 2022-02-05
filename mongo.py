@@ -304,6 +304,14 @@ def task():
             change_status(username, new_status)
             add_stock_value(username, amt)
 
+            stocks = list(result["stocks"])
+
+            for stock in stocks:
+                if not stock["amount"]:
+                    stocks.remove(stock)
+            
+            set_to(result["username"], "stocks", stocks)
+
         time.sleep(10) # 10 seconds delay after checking each stock
 
 
