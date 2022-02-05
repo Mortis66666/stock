@@ -228,3 +228,7 @@ li :hover {
     font-size: 20px;
     background-color: #9C4E00;
 }
+
+button:hover {
+    color: gold;
+}

@@ -147,6 +147,9 @@ def add_stock(buyer: str, stock_owner: str, amount: int) -> None:
             }
         )
 
+    for stock in stocks:
+        print(stock)
+
     profiles.update_one(
         buyer_info,
         {
