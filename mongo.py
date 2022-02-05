@@ -150,14 +150,7 @@ def add_stock(buyer: str, stock_owner: str, amount: int) -> None:
     for stock in stocks:
         print(stock)
 
-    profiles.update_one(
-        buyer_info,
-        {
-            "$set": {
-                "stocks": stocks
-            }
-        }
-    )
+    set_to(buyer_info, "stocks", stocks)
 
     profiles.update_one(
         stock_owner_info,
