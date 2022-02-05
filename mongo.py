@@ -313,6 +313,7 @@ def task():
             
             set_to(result["username"], "stocks", stocks)
 
+        logging.warn("One round ended")
         time.sleep(10) # 10 seconds delay after checking each stock
 
 
