@@ -184,7 +184,7 @@ def refresh():
             session.pop("homemsg", None)
 
         else:
-            session["homemsg"] = f"You still need to wait for {round(diff)} seconds to refresh"
+            session["homemsg"] = f"You still need to wait for {round(10-diff)} seconds to refresh"
 
         return redirect(url_for('home'))
 
@@ -212,13 +212,13 @@ def claim():
             session["homemsg"] = "Daily claimed!\nYou received 100 coins"
         
         else:
-            diff = round(diff)
+            diff = round(60*60*24-diff)
 
-            hours = diff % 3600
-            diff //= 3600
+            hours = diff // 3600
+            diff %= 3600
 
-            minutes = diff % 60
-            diff //= 60
+            minutes = diff // 60
+            diff %= 60
 
             seconds = diff
 
