@@ -28,8 +28,8 @@ function decrease (name) {
     }
 };
 
-function buy (stock_owner) {
+function sell (stock_owner) {
 
     const amount = document.getElementById("amount"+stock_owner).innerText;
-    window.location.href = `https://mortis666stocksimulator.herokuapp.com/buy?user=${stock_owner}&amount=${amount}`;
+    window.location.href = `https://mortis666stocksimulator.herokuapp.com/sell?user=${stock_owner}&amount=${amount}`;
 };

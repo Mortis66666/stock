@@ -45,7 +45,7 @@ def mystocks():
     username = session["username"]
     infos = get_user_info(username)
 
-    return render_template("mystocks.html", **infos)
+    return render_template("mystocks.html", message=session.get("msmsg", None), **infos)
 
 @app.route('/search')
 def search():
@@ -144,7 +144,7 @@ def buy():
             buyer_bal = get_user_info(buyer)["coins"]
             stock_left = get_user_info(stock_owner)["stock_left"]
 
-            if buyer_bal > price and amount < stock_left:
+            if buyer_bal >= price and amount <= stock_left:
                 add_bal(buyer, -price)
                 add_stock(buyer, stock_owner, amount)
                 session["homemsg"] = ""
@@ -165,6 +165,43 @@ def buy():
         return redirect(url_for("oops"))
 
     
+@app.route('/sell')
+def sell():
+
+    if request.method == "GET":
+
+        try:
+
+            form = request.args
+            
+            user = session["username"]
+            stock_owner = form["user"]
+            amount = int(form["amount"])
+            earn = amount * get_user_info(stock_owner)["stock_value"]
+            have = 0
+
+            for stock in get_user_info(user)["stocks"]:
+                if stock["name"] == stock_owner:
+                    have = stock["amount"]
+            
+            if amount <= have:
+                add_stock(user, stock_owner, -amount)
+                add_bal(user, earn)
+                session.pop("msmsg", None)
+            
+            else:
+                session["msmsg"] = "You don't have so much stocks!"
+
+
+        except Exception as e:
+            app.logger.error(e)
+            return redirect(url_for("oops"))
+    
+    else:
+        app.logger.warning("Wrong method")
+        return redirect(url_for("oops"))
+
+
 @app.route('/refresh')
 def refresh():
 
