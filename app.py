@@ -45,7 +45,7 @@ def mystocks():
     username = session["username"]
     infos = get_user_info(username)
 
-    return render_template("mystocks.html", message=session.get("msmsg", None), **infos)
+    return render_template("mystocks.html", message=session.get("msmsg", ""), **infos)
 
 @app.route('/search')
 def search():
