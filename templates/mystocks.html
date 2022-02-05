@@ -60,10 +60,12 @@
         </div>
     </div>
     <div class="stocks">
-        {%- for stock in get_user_info(username)["stocks"]%}
+        {%- for stock in get_user_info(username)["stocks"] %}
+            {% set name = stock["name"] %}
+            {% set amount = stock["amount"] %}
             <div class="stock">
                 <div class="archivo stockname">
-                    Mortis_666<br>stock
+                    {{name}}<br>stock
                 </div>
                 <div class="buybutton archivo">
                     <button class="archivo buy" onclick="sell('{{name}}')">
@@ -72,14 +74,14 @@
                 </div>
                 <div class="archivo amountcontroll">
                     <button class="change dec" onclick="decrease('{{name}}')">-</button>
-                    <p class="amount" id="amount{{name}}">
+                    <p class="amount" id="amount{{stock['name']}}">
                         1
                     </p>
                     <button class="change inc" onclick="increase('{{name}}')">+</button>
                 </div>
                 <p class="archivo text greenFont">stock(s)<br>to get</p>
                 <div class="price archivo" id="price{{name}}">
-                    💰{{get_user_info(stock["name"])["stock_value"]}}
+                    💰{{get_user_info(name)["stock_value"]}}
                 </div>
                 <div class="archivo stock-left">
                     You have:<br>{{stock["amount"]}}
