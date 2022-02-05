@@ -214,7 +214,7 @@ def task():
 
     # Start changing stock value after 1 minute when the app starts
 
-    print("Task started!")
+    logging.warn("Task started!")
     # time.sleep(60)
 
     while True:
@@ -259,7 +259,7 @@ def task():
                             30 + streak + stock_left/100,
                             35
                         ]
-                    )
+                    )[0]
 
                 case "rem":
 
@@ -275,7 +275,7 @@ def task():
                             30 + stock_left/100,
                             35 + streak
                         ]
-                    )
+                    )[0]
 
                 case None:
 
@@ -290,7 +290,7 @@ def task():
                             30 + stock_left/100,
                             35
                         ]
-                    )
+                    )[0]
             amt = randint(1,3)
             match new_status:
                 case "dec":
@@ -298,7 +298,7 @@ def task():
                 case "rem":
                     amt *= 0
             if status == new_status:
-                add_streak(username, amt)
+                add_streak(username, 1)
             else:
                 add_streak(username,-streak)
 
@@ -311,10 +311,7 @@ def task():
                 if not stock["amount"]:
                     stocks.remove(stock)
             
-            set_to(result["username"], "stocks", stocks)
+            set_to(username, "stocks", stocks)
 
         logging.warn("One round ended")
         time.sleep(10) # 10 seconds delay after checking each stock
-
-
-
