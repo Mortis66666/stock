@@ -215,7 +215,7 @@ def task():
     # Start changing stock value after 1 minute when the app starts
 
     logging.warn("Task started!")
-    # time.sleep(60)
+    time.sleep(60)
 
     while True:
 
@@ -313,5 +313,4 @@ def task():
             
             set_to(username, "stocks", stocks)
 
-        logging.warn("One round ended")
         time.sleep(10) # 10 seconds delay after checking each stock
