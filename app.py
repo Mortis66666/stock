@@ -112,6 +112,7 @@ def login_validator():
         if valid:
             session["username"] = username
             session.pop("login_warning", None)
+            logging.info(f"{username} logged in.")
             return redirect(url_for('home'))
         print(message)
         session["login_warning"] = message
@@ -159,7 +160,8 @@ def buy():
             if buyer_bal >= price and amount <= stock_left:
                 add_bal(buyer, -price)
                 add_stock(buyer, stock_owner, amount)
-                session["homemsg"] = ""
+                session.pop("homemsg", None)
+                logging.info(f"{buyer} bought {amount} {stock_owner} stocks with 💰{price}")
                 return redirect(url_for('home'))
             elif buyer_bal < price:
                 session["homemsg"] = "Not enough coins"
@@ -199,6 +201,7 @@ def sell():
             if amount <= have:
                 add_stock(user, stock_owner, -amount)
                 add_bal(user, earn)
+                logging.info(f"{user} sold {amount} {stock_owner} stocks and earned 💰{earn}")
                 session.pop("msmsg", None)
             
             else:
