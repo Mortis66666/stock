@@ -248,7 +248,7 @@ def task():
                         ],
                         weights = [
                             30 + streak + bonus,
-                            20 + stock_left/100,
+                            25 + stock_left/100,
                             35
                         ]
                     )[0]
@@ -262,7 +262,7 @@ def task():
                             "rem"
                         ],
                         weights = [
-                            20 + bonus,
+                            25 + bonus,
                             30 + streak + stock_left/100,
                             35
                         ]
@@ -280,7 +280,7 @@ def task():
                         weights = [
                             30 + bonus,
                             30 + stock_left/100,
-                            35 + streak
+                            40 + streak
                         ]
                     )[0]
 
@@ -295,7 +295,7 @@ def task():
                         weights = [
                             30 + bonus,
                             30 + stock_left/100,
-                            35
+                            40
                         ]
                     )[0]
             amt = randint(1,3)
