@@ -349,15 +349,15 @@ def task():
             change_status(username, new_status)
             add_stock_value(username, amt)
 
-            logging.info(f"{username} status: {status} -> {new_status}")
-            logging.info(f"{username} stock price: {stock_value} -> {stock_value+amt}")
+            print(f"{username} status: {status} -> {new_status}")
+            print(f"{username} stock price: {stock_value} -> {stock_value+amt}")
 
             stocks = list(result["stocks"])
 
             for stock in stocks:
                 if not stock["amount"]:
                     stocks.remove(stock)
-                    logging.info(f"Removed {stock['name']} from {username}")
+                    print(f"Removed {stock['name']} from {username}")
             
             set_to(username, "stocks", stocks)
 
