@@ -8,13 +8,14 @@
     <title>Stock simulator</title>
 
     <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mortis.png')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='styles/home.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/leaderboard.css')}}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet"> 
 
     <script src="https://kit.fontawesome.com/f67e8ffd5c.js" crossorigin="anonymous"></script>
 </head>
@@ -59,8 +60,48 @@
         </div>
     </div>
 
+    <div class="leaderboard">
+        <table class="archivo">
+            <tr>
+                <th id="ranking">
+                    Ranking
+                </th>
+                <th id="user-name">
+                    Username
+                </th>
+                <th id="networth">
+                    Net Worth
+                </th>
+            </tr>
+            <tr>
+                <td class="td-ranking">
+                    {{index}}.
+                </td>
+                <td class="td-username mochi">
+                    <i class="fas fa-user-circle"></i>{{username}}
+                </td>
+                <td class="td-networth">
+                    💰{{networth}}
+                </td>
+            </tr>
+            {%- for rank, (user, nw) in enumerate(top, 1) %}
+                <tr>
+                    <td class="td-ranking">
+                        {{rank}}.
+                    </td>
+                    <td class="td-username mochi">
+                        <i class="fas fa-user-circle"></i>{{user}}
+                    </td>
+                    <td class="td-networth">
+                        💰{{nw}}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 
 
-    <script src="{{url_for('static', filename='scripts/mongo.js')}}"></script>
+
+    <!-- <script src="{{url_for('static', filename='scripts/mongo.js')}}"></script> -->
 </body>
 </html>

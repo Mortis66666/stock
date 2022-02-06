@@ -1,3 +1,4 @@
+from webbrowser import get
 from flask import Flask, redirect, render_template, request, url_for, session
 from mongo import *
 from threading import Thread
@@ -6,7 +7,7 @@ import time
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex()
-app.jinja_env.globals.update(get_user_info=get_user_info)
+app.jinja_env.globals.update(get_user_info=get_user_info, get_net_worth=get_net_worth)
 
 
 # Routing
@@ -65,7 +66,16 @@ def leaderboard():
     username = session["username"]
     infos = get_user_info(username)
 
-    return render_template("leaderboard.html", **infos)
+    index = get_top().index(
+        [
+            username,
+            get_net_worth(username)
+        ]
+    ) + 1
+
+    networth = get_net_worth(username)
+
+    return render_template("leaderboard.html", index=index, networth=networth, top=get_top(), **infos)
 
 @app.route('/faq')
 def faq():

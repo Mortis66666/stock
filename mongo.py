@@ -208,6 +208,38 @@ def random_stocks():
     for random_stock in unique_everseen(ranstocks):
         yield random_stock["username"]
 
+def get_net_worth(username: str) -> int:
+    
+    info = get_user_info(username)
+    bal = info["coins"]
+    stocks = info["stocks"]
+
+    for stock in stocks:
+        stock_owner = stock["name"]
+        amount = stock["amount"]
+
+        value = get_user_info(stock_owner)["stock_value"]
+        worth = value * amount
+
+        bal += worth
+
+    return bal
+
+def get_top():
+
+    leaderboard = []
+
+    users = [*map(dict,profiles.find())]
+    users.sort(key=lambda x:get_net_worth(x["username"]), reverse=True)
+
+    for n, user in enumerate(users,1):
+        if n == 11:
+            break
+        else:
+            leaderboard.append([user["username"],get_net_worth(user["username"])])
+
+
+
 def task():
 
     # Start changing stock value after 1 minute when the app starts
