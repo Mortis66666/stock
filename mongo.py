@@ -225,6 +225,7 @@ def task():
             streak = result["streak"]
             username = result["username"]
             stock_left = result["stock_left"]
+            stock_value = result["stock_value"]
             
             new_status = None
             match status:
@@ -299,6 +300,9 @@ def task():
                 add_streak(username, 1)
             else:
                 add_streak(username,-streak)
+
+            if -amt > stock_value:
+                amt = -stock_value
 
             change_status(username, new_status)
             add_stock_value(username, amt)
