@@ -228,6 +228,14 @@ def task():
             stock_value = result["stock_value"]
             
             new_status = None
+
+            bonus = 0
+
+            for x in profiles.find():
+                for xstock in x["stocks"]:
+                    if xstock["name"] == username and xstock["amount"]:
+                        bonus += 1
+
             match status:
 
                 case "inc":
@@ -239,7 +247,7 @@ def task():
                             "rem"
                         ],
                         weights = [
-                            30 + streak + (100-stock_left)/3,
+                            30 + streak + bonus,
                             20 + stock_left/100,
                             35
                         ]
@@ -254,7 +262,7 @@ def task():
                             "rem"
                         ],
                         weights = [
-                            20 + (100-stock_left)/3,
+                            20 + bonus,
                             30 + streak + stock_left/100,
                             35
                         ]
@@ -270,7 +278,7 @@ def task():
                             "rem"
                         ],
                         weights = [
-                            30 + (100-stock_left)/3,
+                            30 + bonus,
                             30 + stock_left/100,
                             35 + streak
                         ]
@@ -285,7 +293,7 @@ def task():
                             "rem"
                         ],
                         weights = [
-                            30 + (100-stock_left)/3,
+                            30 + bonus,
                             30 + stock_left/100,
                             35
                         ]
