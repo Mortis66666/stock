@@ -225,7 +225,7 @@ def get_net_worth(username: str) -> int:
 
     return bal
 
-def get_top():
+def get_top() -> list:
 
     leaderboard = []
 
@@ -237,6 +237,8 @@ def get_top():
             break
         else:
             leaderboard.append([user["username"],get_net_worth(user["username"])])
+
+    return leaderboard
 
 
 
