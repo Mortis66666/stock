@@ -1,6 +1,5 @@
 from flask import Flask, redirect, render_template, request, url_for, session
 from mongo import *
-from threading import Thread
 import secrets
 import time
 
@@ -302,5 +301,4 @@ def page_not_found(error):
     return render_template("page_not_found.html"), 404
 
 if __name__ == "__main__":
-    Thread(target=task).start()
     app.run()
