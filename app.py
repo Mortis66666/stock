@@ -1,4 +1,3 @@
-from webbrowser import get
 from flask import Flask, redirect, render_template, request, url_for, session
 from mongo import *
 from threading import Thread
@@ -33,6 +32,7 @@ def home():
         return redirect(url_for("login"))
     username = session["username"]
     infos = get_user_info(username)
+    session.pop("msmsg", None)
 
     return render_template("home.html", message=session.get("homemsg", ""), **infos)
 
@@ -47,7 +47,7 @@ def mystocks():
         return redirect(url_for("login"))
     username = session["username"]
     infos = get_user_info(username)
-
+    session.pop("homemsg", None)
     return render_template("mystocks.html", message=session.get("msmsg", ""), **infos)
 
 @app.route('/search')
@@ -159,6 +159,7 @@ def buy():
 
             if buyer_bal >= price and amount <= stock_left:
                 add_bal(buyer, -price)
+                time.sleep(0.2)
                 add_stock(buyer, stock_owner, amount)
                 session.pop("homemsg", None)
                 print(f"{buyer} bought {amount} {stock_owner} stocks with 💰{price}")
