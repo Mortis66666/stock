@@ -39,7 +39,7 @@ function sleep(ms) {
 }
 
 setInterval(() => {
-    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api", (data) => { 
+    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api?callback=?", (data) => { 
         data.forEach((object) => {
                 var name = object.username;
                 var price = object.stock_value;
