@@ -39,11 +39,8 @@ function sleep(ms) {
 }
 
 while (true) {
-    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api", data,
-        function (data, textStatus, jqXHR) {
-            
-            data.forEach(object => {
-                
+    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api", (data) => { 
+        data.forEach((object) => {
                 var name = object.username;
                 var price = object.stock_value;
                 var result = getElementById("price"+name);
@@ -56,9 +53,7 @@ while (true) {
                 };
 
             });
-
         }
     );
-
     sleep(3000);
 }
