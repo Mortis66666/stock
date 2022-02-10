@@ -131,7 +131,7 @@ li :hover {
     font-size: 30px;
     background-color: black;
 
-    position: fixed;
+    position: absolute;
     transform: translate(40%, 0%);
 }
 
