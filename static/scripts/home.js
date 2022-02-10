@@ -5,7 +5,7 @@ if (message) {
 };
 
 setInterval(function () {
-    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api?callback=?", function (data) { 
+    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api?method=getQuote&format=jsonp&lang=en&jsonp=?", function (data) { 
         $.each(data, function (key, value) { 
              
             var valueElement = document.getElementById("price"+key);
