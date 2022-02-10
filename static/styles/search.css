@@ -105,7 +105,7 @@ li :hover {
 }
 
 #searchbox {
-    position: fixed;
+    position: absolute;
     top: 20%;
     width: 70%;
 }
@@ -141,7 +141,7 @@ li :hover {
 
 .stocks {
     position: absolute;
-    top: 200px;
+    top: 350px;
 }
 
 .stock {
