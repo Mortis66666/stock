@@ -41,14 +41,19 @@ function sleep(ms) {
 setInterval(() => {
     $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api?callback=?", (data) => { 
         data.forEach((object) => {
-                var name = object.username;
-                var price = object.stock_value;
-                var result = getElementById("price"+name);
-                var amount = getElementById("amount"+name);
+                var stockName = object.username;
+                var newPrice = object.stock_value;
+                var priceElement = getElementById("price"+stockName);
+                var amount = getElementById("amount"+stockName);
 
+                console.log(`Stock name: ${stockName}`)
+                console.log(`New price: ${newPrice}`)
+                console.log(`Old price: ${priceElement.innerText}`)
+                console.log(`Amount: ${amount.innerText}`)
+                
                 if (result) {
-                    if (amount.innerText == 1) {
-                        result.innerText = price;
+                    if (amount.innerText.trim() == 1) {
+                        priceElement.innerText = "💰" + newPrice;
                     };
                 };
 
