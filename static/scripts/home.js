@@ -38,25 +38,25 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-setInterval(() => {
-    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api?callback=?", (data) => { 
+setInterval(function () {
+    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api?callback=?", function (data) { 
         data.forEach((object) => {
                 var stockName = object.username;
                 var newPrice = object.stock_value;
                 var priceElement = getElementById("price"+stockName);
                 var amount = getElementById("amount"+stockName);
 
-                console.log(`Stock name: ${stockName}`)
-                console.log(`New price: ${newPrice}`)
-                console.log(`Old price: ${priceElement.innerText}`)
-                console.log(`Amount: ${amount.innerText}`)
+                console.log(`Stock name: ${stockName}`);
+                console.log(`New price: ${newPrice}`);
+                console.log(`Old price: ${priceElement.innerText}`);
+                console.log(`Amount: ${amount.innerText}`);
                 
                 if (result) {
                     if (amount.innerText.trim() == 1) {
                         priceElement.innerText = "💰" + newPrice;
                     };
                 };
-
-            });
+            }
+        );
     });
-}, 3000)
+    }, 3000);
