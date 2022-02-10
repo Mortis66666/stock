@@ -57,7 +57,7 @@ def search():
     username = session["username"]
     infos = get_user_info(username)
 
-    query = request.args.get("q", "")
+    query = request.args.get("q", "!nothing")
 
     result = [
         stock["username"]
