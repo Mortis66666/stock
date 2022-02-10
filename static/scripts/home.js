@@ -31,5 +31,5 @@ function decrease (name) {
 function buy (stock_owner) {
 
     const amount = document.getElementById("amount"+stock_owner).innerText;
-    window.location.href = `https://mortis666stocksimulator.herokuapp.com/buy?user=${stock_owner}&amount=${amount}`;
+    window.location.href = `https://mortis666stocksimulator.herokuapp.com/buy?user=${stock_owner}&amount=${amount}&redirect=${window.location.href}`;
 };

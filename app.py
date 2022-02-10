@@ -154,6 +154,7 @@ def buy():
             
             buyer = session["username"]
             stock_owner = form["user"]
+            redirect_url = form["redirect"]
             amount = int(form["amount"])
             price = amount * get_user_info(stock_owner)["stock_value"]
             buyer_bal = get_user_info(buyer)["coins"]
@@ -165,13 +166,12 @@ def buy():
                 add_stock(buyer, stock_owner, amount)
                 session.pop("homemsg", None)
                 print(f"{buyer} bought {amount} {stock_owner} stocks with 💰{price}")
-                return redirect(url_for('home'))
             elif buyer_bal < price:
                 session["homemsg"] = "Not enough coins"
-                return redirect(url_for("home"))
             else:
                 session["homemsg"] = f"{stock_owner} stock not enough..."
-                return redirect(url_for("home"))
+
+            return redirect(redirect_url)
 
         except Exception as e:
             app.logger.error(e)
