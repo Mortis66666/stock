@@ -38,7 +38,7 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-while (true) {
+setInterval(() => {
     $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api", (data) => { 
         data.forEach((object) => {
                 var name = object.username;
@@ -53,7 +53,5 @@ while (true) {
                 };
 
             });
-        }
-    );
-    sleep(3000);
-}
+    });
+}, 3000)
