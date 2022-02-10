@@ -1,3 +1,4 @@
+import re
 from pymongo import MongoClient
 import os
 from typing import Any, Tuple, Union
@@ -240,6 +241,27 @@ def get_top() -> list:
 
     return leaderboard
 
+def get_stocks():
+
+    for stock in profiles.find():
+        yield {
+            "username": stock["username"],
+            "stock_value": stock["stock_value"]
+        }
+
+def search_for(username):
+
+    return profiles.find(
+        {
+            "username": re.compile(
+                username, re.IGNORECASE
+            )
+        },
+        {
+            "username": 1,
+            "stock_value": 1
+        }
+    )
 
 
 def task():

@@ -8,7 +8,7 @@
     <title>Stock simulator</title>
 
     <link rel="icon" type="image/x-icon" href="{{url_for('static',filename='images/mortis.png')}}">
-    <link rel="stylesheet" href="{{url_for('static',filename='styles/home.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/search.css')}}">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -57,6 +57,42 @@
         <div class="greenFont mochi" id="coins">
             💰{{coins}}
         </div>
+    </div>
+
+    <div id="searchbox">
+        <form>
+            <input type="search" id="search" placeholder="  Search for stocks to buy" class="archivo greenFont" name="q">
+            <input type="submit" id="submit" class="archivo greenFont" value="Search">
+        </form>
+    </div>
+
+    <div class="stocks">
+        {%- for name in result %}
+            <div class="stocks">
+                <div class="archivo stockname">
+                    {{name}}<br>stock
+                </div>
+                <div class="buybutton archivo">
+                    <button class="archivo buy" onclick="buy('{{name}}')">
+                        Buy
+                    </button>
+                </div>
+                <div class="archivo amountcontroll">
+                    <button class="change dec" onclick="decrease('{{name}}')">-</button>
+                    <p class="amount" id="amount{{name}}">
+                        1
+                    </p>
+                    <button class="change inc" onclick="increase('{{name}}')">+</button>
+                </div>
+                <p class="archivo text">stock(s)<br>with</p>
+                <div class="price" id="price{{name}}">
+                    💰{{get_user_info(name)["stock_value"]}}
+                </div>
+                <div class="archivo stock-left">
+                    Stock left:<br>{{get_user_info(name)["stock_left"]}}
+                </div>
+            </div>
+        {%- endfor %}
     </div>
 
 

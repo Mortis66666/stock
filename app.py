@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, request, url_for, session
+from flask import Flask, jsonify, redirect, render_template, request, url_for, session
 from mongo import *
 import secrets
 import time
@@ -53,10 +53,18 @@ def mystocks():
 def search():
     if "username" not in session:
         return redirect(url_for("login"))
+
     username = session["username"]
     infos = get_user_info(username)
 
-    return render_template("search.html", **infos)
+    query = request.args.get("q", "")
+
+    result = [
+        stock["username"]
+        for stock in search_for(query)
+    ]
+
+    return render_template("search.html", result=result, **infos)
 
 @app.route('/leaderboard')
 def leaderboard():
@@ -87,11 +95,6 @@ def profile():
     # TODO render template and kwargs for profile
     pass
 
-@app.route('/stock/<username>')
-def stock(username):
-
-    # TODO Get the user info and send to html
-    pass
 
 @app.route('/oops')
 def oops():
@@ -99,7 +102,7 @@ def oops():
     return render_template("oops.html")
 
 
-# Routes for verifiying user data
+# API routes
 @app.route('/login_validator', methods = ["POST", "GET"])
 def login_validator():
 
@@ -292,6 +295,16 @@ def claim():
 
     except KeyError:
         return redirect(url_for('login'))
+
+@app.route("/stock_api")
+def stock_api():
+
+    return jsonify(
+        [
+            stock
+            for stock in get_stocks()
+        ]
+    )
 
 
 # Error handling

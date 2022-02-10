@@ -1,0 +1,128 @@
+.stocks {
+    position: absolute;
+    top: 200px;
+}
+
+.stock {
+    background-color: black;
+    height: 300px;
+    width: 270px;
+
+    border: 50px solid #2e2b2b;
+    float: left;
+}
+
+.stock .stockname {
+    color: gold;
+    text-align: center;
+    width: 100%;
+    font-size: 22px;
+    background-color: #9C4E00;
+}
+
+.buy {
+    position: relative;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 100px;
+    height: 45px;
+    border: 3px solid gold;
+    border-style: outset;
+    background-color: #08ffc1;
+    font-size: 20px;
+}
+
+.amountcontroll {
+    position: relative;
+    top: 30px;
+    color: white;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.change {
+    font-weight: bold;
+    font-size: 15px;
+
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+
+    background-color: #08ffc1;
+    border: 3px solid gold;
+    border-style: outset;
+    text-align: center;
+}
+
+
+.amount {
+    color: black;
+    background-color: #08ffc1;
+    border: 3px solid gold;
+    border-style: outset;
+    text-align: center;
+
+    position: relative;
+
+    width: 60px;
+    height: 30px;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+.dec {
+    position: relative;
+    right: 10px;
+}
+
+.inc {
+    position: relative;
+    left: 10px;
+}
+
+.text {
+    position: relative;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 200px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.price {
+    border: 3px solid gold;
+    border-style: outset;
+
+    background-color: grey;
+    color: black;
+    width: 80px;
+    height: 30px;
+
+    text-align: center;
+    font-size: 15px;
+
+    position: relative;
+    top: 0px;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 0px;
+}
+
+.stock-left {
+    position: relative;
+    top: 16px;
+    color: gold;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    background-color: #9C4E00;
+}
+
+button:hover {
+    color: gold;
+}
