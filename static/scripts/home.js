@@ -4,6 +4,20 @@ if (message) {
     alert(message);
 };
 
+setInterval(function () {
+    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api?callback=?", function (data) { 
+        $.each(data, function (key, value) { 
+             
+            var valueElement = document.getElementById("price"+key);
+            var amountElement = document.getElementById("amount"+key);
+
+            if (amountElement.innerText == 1) {
+                valueElement = "💰" + value;
+            }
+        });
+    });
+}, 3000);
+
 function increase (name) {
 
     const id = "amount"+name;
@@ -37,26 +51,3 @@ function buy (stock_owner) {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-setInterval(function () {
-    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api?callback=?", function (data) { 
-        data.forEach((object) => {
-                var stockName = object.username;
-                var newPrice = object.stock_value;
-                var priceElement = getElementById("price"+stockName);
-                var amount = getElementById("amount"+stockName);
-
-                console.log(`Stock name: ${stockName}`);
-                console.log(`New price: ${newPrice}`);
-                console.log(`Old price: ${priceElement.innerText}`);
-                console.log(`Amount: ${amount.innerText}`);
-                
-                if (result) {
-                    if (amount.innerText.trim() == 1) {
-                        priceElement.innerText = "💰" + newPrice;
-                    };
-                };
-            }
-        );
-    });
-    }, 3000);

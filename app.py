@@ -299,12 +299,10 @@ def claim():
 @app.route("/stock_api")
 def stock_api():
 
-    return jsonify(
-        [
-            stock
-            for stock in get_stocks()
-        ]
-    )
+    return {
+        stock["username"]: stock["stock_value"]
+        for stock in get_stocks()
+    }
 
 
 # Error handling
