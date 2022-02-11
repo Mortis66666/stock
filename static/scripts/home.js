@@ -12,7 +12,7 @@ setInterval(function () {
             var amountElement = document.getElementById("amount"+key);
 
             if (amountElement.innerText == 1) {
-                valueElement = "💰" + value;
+                valueElement.innerText = "💰" + value;
             }
         });
     });
