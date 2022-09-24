@@ -160,6 +160,22 @@ def add_stock(buyer: str, stock_owner: str, amount: int) -> None:
         }
     )
 
+def add_history(username, amt):
+
+    profiles.update_one(
+        {
+            "username": username
+        },
+        {
+            "$push": {
+                "history": {
+                    "$each": [ amt ],
+                    "$slice": -100
+                }
+            }
+        }
+    )
+
 def change_status(username: str, new_status: str) -> None:
     profiles.update_one(
         filter = {
@@ -227,19 +243,15 @@ def get_net_worth(username: str) -> int:
     return bal
 
 def get_top() -> list:
-
-    leaderboard = []
-
     users = [*map(dict,profiles.find())]
-    users.sort(key=lambda x:get_net_worth(x["username"]), reverse=True)
+    pairs = []
 
-    for n, user in enumerate(users,1):
-        if n == 11:
-            break
-        else:
-            leaderboard.append([user["username"],get_net_worth(user["username"])])
+    for user in users:
+        pairs.append([user["username"], get_net_worth(user["username"])])
 
-    return leaderboard
+    pairs.sort(lambda pair: -pair[1])
+
+    return pairs
 
 def get_stocks():
 
@@ -370,6 +382,7 @@ def task():
 
             change_status(username, new_status)
             add_stock_value(username, amt)
+            add_history(username, stock_value + amt)
 
             print(f"{username} status: {status} -> {new_status}")
             print(f"{username} stock price: {stock_value} -> {stock_value+amt}")

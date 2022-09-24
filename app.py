@@ -73,7 +73,9 @@ def leaderboard():
     username = session["username"]
     infos = get_user_info(username)
 
-    index = get_top().index(
+    top = get_top()
+
+    index = top.index(
         [
             username,
             get_net_worth(username)
@@ -82,7 +84,7 @@ def leaderboard():
 
     networth = get_net_worth(username)
 
-    return render_template("leaderboard.html", index=index, networth=networth, top=get_top(), **infos)
+    return render_template("leaderboard.html", index=index, networth=networth, top=top[:10], **infos)
 
 @app.route('/faq')
 def faq():
@@ -100,6 +102,18 @@ def profile():
 def oops():
 
     return render_template("oops.html")
+
+
+@app.route('/info', method=["GET"])
+def info():
+
+    form = request.form
+    stock_owner = form["user"]
+
+    return render_template("info.html", owner=stock_owner, history=str(get_user_info(stock_owner)["history"]))
+
+
+
 
 
 # API routes
