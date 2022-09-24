@@ -107,7 +107,7 @@ def oops():
 @app.route('/info', methods=["GET"])
 def info():
 
-    form = request.form
+    form = request.args
     stock_owner = form["user"]
 
     return render_template("info.html", owner=stock_owner, history=str(get_user_info(stock_owner)["history"]))
