@@ -104,7 +104,7 @@ def oops():
     return render_template("oops.html")
 
 
-@app.route('/info', method=["GET"])
+@app.route('/info', methods=["GET"])
 def info():
 
     form = request.form
