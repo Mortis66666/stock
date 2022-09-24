@@ -1,0 +1,13 @@
+:root {
+    background-color: #2e2b2b;
+}
+
+h1 {
+    color: #00ff73;
+    font-family: 'Mochiy Pop P One', sans-serif;
+}
+
+
+.hide {
+    display: none;
+}
