@@ -4,19 +4,6 @@ if (message) {
     alert(message);
 };
 
-setInterval(function () {
-    $.getJSON("https://mortis666stocksimulator.herokuapp.com/stock_api?format=jsonp&lang=en&jsonp=?&callback=?", function (data) { 
-        $.each(data, function (key, value) { 
-             
-            var valueElement = document.getElementById("price"+key);
-            var amountElement = document.getElementById("amount"+key);
-
-            if (amountElement.innerText == 1) {
-                valueElement.innerText = "💰" + value;
-            }
-        });
-    });
-}, 3000);
 
 function increase (name) {
 
