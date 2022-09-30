@@ -69,7 +69,8 @@ def sign_up(username, password):
         "stock_left": 100,
         "last_refresh": 0,
         "last_claim": 0,
-        "random_stocks": list(random_stocks())
+        "random_stocks": list(random_stocks()),
+        "history": []
     }
 
     profiles.insert_one(post)
@@ -249,7 +250,7 @@ def get_top() -> list:
     for user in users:
         pairs.append([user["username"], get_net_worth(user["username"])])
 
-    pairs.sort(lambda pair: -pair[1])
+    pairs.sort(key=lambda pair: -pair[1])
 
     return pairs
 
