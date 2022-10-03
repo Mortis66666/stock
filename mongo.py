@@ -132,15 +132,12 @@ def add_stock(buyer: str, stock_owner: str, amount: int) -> None:
     buyer_info = get_user_info(buyer)
     stocks = list(buyer_info["stocks"])
 
-    inserted = False
 
     for stock in stocks:
         if stock["name"] == stock_owner:
             stock["amount"] += amount
-            inserted = True
             break
-    
-    if not inserted:
+    else:
         stocks.append(
             {
                 "name": stock_owner,
@@ -293,7 +290,7 @@ def task():
             status = result["status"]
             streak = result["streak"]
             username = result["username"]
-            stock_left = result["stock_left"]
+            stock_left = min(result["stock_left"], 1)
             stock_value = result["stock_value"]
             
             new_status = None
@@ -396,5 +393,8 @@ def task():
                     print(f"Removed {stock['name']} from {username}")
             
             set_to(username, "stocks", stocks)
+
+            if stock_left < 0:
+                set_to(username, "stock_left", 0)
 
         time.sleep(60) # 60 seconds delay after checking each stock
