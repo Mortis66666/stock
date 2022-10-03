@@ -170,20 +170,22 @@ def buy():
             stock_owner = form["user"]
             redirect_url = form["redirect"]
             amount = int(form["amount"])
-            price = amount * get_user_info(stock_owner)["stock_value"]
-            buyer_bal = get_user_info(buyer)["coins"]
-            stock_left = get_user_info(stock_owner)["stock_left"]
 
-            if buyer_bal >= price and amount <= stock_left:
+            owner_info = get_user_info(stock_owner)
+
+            price = amount * owner_info["stock_value"]
+            buyer_bal = get_user_info(buyer)["coins"]
+            stock_left = owner_info["stock_left"]
+
+            if buyer_bal < price:
+                session["homemsg"] = "Not enough coins"
+            elif stock_left < amount:
+                session["homemsg"] = f"{stock_owner} stock not enough..."
+            else:
                 add_bal(buyer, -price)
-                time.sleep(0.2)
                 add_stock(buyer, stock_owner, amount)
                 session.pop("homemsg", None)
                 print(f"{buyer} bought {amount} {stock_owner} stocks with 💰{price}")
-            elif buyer_bal < price:
-                session["homemsg"] = "Not enough coins"
-            else:
-                session["homemsg"] = f"{stock_owner} stock not enough..."
 
             return redirect(redirect_url)
 
@@ -214,6 +216,7 @@ def sell():
             for stock in get_user_info(user)["stocks"]:
                 if stock["name"] == stock_owner:
                     have = stock["amount"]
+                    break
             
             if amount <= have:
                 add_stock(user, stock_owner, -amount)
@@ -313,10 +316,12 @@ def claim():
 @app.route("/stock_api")
 def stock_api():
 
-    return {
+    response = jsonify({
         stock["username"]: stock["stock_value"]
         for stock in get_stocks()
-    }
+    })
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 # Error handling
