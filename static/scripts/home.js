@@ -38,3 +38,27 @@ function buy (stock_owner) {
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+setInterval(async () => {
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://mortis666stocksimulator.herokuapp.com/stock_api",
+        "method": "GET",
+        "headers": {
+            "Accept": "*/*",
+            "User-Agent": window.navigator.userAgent
+        }
+    };
+      
+    $.ajax(settings).done(response => {
+        for (let [user, price] of Object.entries(response)) {
+            let priceElement = document.getElementById("price"+user);
+            let amountElement = document.getElementById("amount"+user);
+
+            if (priceElement) {
+                priceElement.innerHTML = "💰" + (price * +amountElement.innerHTML)
+            }
+        }
+    });
+}, 30000);
