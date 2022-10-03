@@ -397,4 +397,4 @@ def task():
             
             set_to(username, "stocks", stocks)
 
-        time.sleep(10) # 10 seconds delay after checking each stock
+        time.sleep(60) # 60 seconds delay after checking each stock
