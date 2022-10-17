@@ -45,10 +45,6 @@ setInterval(async () => {
         "crossDomain": true,
         "url": "https://mortis666stocksimulator.herokuapp.com/stock_api",
         "method": "GET",
-        "headers": {
-            "Accept": "*/*",
-            "User-Agent": window.navigator.userAgent
-        }
     };
       
     $.ajax(settings).done(response => {

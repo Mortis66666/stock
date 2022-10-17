@@ -33,3 +33,23 @@ function sell (stock_owner) {
     const amount = document.getElementById("amount"+stock_owner).innerText;
     window.location.href = `https://mortis666stocksimulator.herokuapp.com/sell?user=${stock_owner}&amount=${amount}`;
 };
+
+setInterval(async () => {
+    const settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://mortis666stocksimulator.herokuapp.com/stock_api",
+        "method": "GET",
+    };
+      
+    $.ajax(settings).done(response => {
+        for (let [user, price] of Object.entries(response)) {
+            let priceElement = document.getElementById("price"+user);
+            let amountElement = document.getElementById("amount"+user);
+
+            if (priceElement) {
+                priceElement.innerHTML = "💰" + (price * +amountElement.innerHTML)
+            }
+        }
+    });
+}, 30000);
