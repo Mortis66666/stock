@@ -16,8 +16,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dongle:wght@300&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bree+Serif&family=Dongle&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dongle:wght@300&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bree+Serif&family=Dongle&display=swap"
+        rel="stylesheet">
 </head>
 <body>
     <div id="header">
@@ -25,7 +27,8 @@
     </div>
 
     <div id="loginForm">
-        <form id="signupForm" oninput="onInput()" onfocus="onFocus()" method="post" action="{{url_for('signup_validator')}}">
+        <form id="signupForm" oninput="onInput()" onfocus="onFocus()" method="post"
+            action="{{url_for('signup_validator')}}">
 
             <label for="username" class="formlabel">Username:</label>
             <input type="text" class="forminput" id="username" name="username" required>
@@ -48,7 +51,7 @@
 
     <div class="donthaveaccount">
         <p>
-            Already have an account? <a href="https://mortis666stocksimulator.herokuapp.com/login">Login!</a>
+            Already have an account? <a href="/login">Login!</a>
         </p>
     </div>
     <input id="warning" type="hidden" value="{{warning}}">

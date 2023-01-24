@@ -16,14 +16,16 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bree+Serif&family=Dongle&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dongle:wght@300&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bree+Serif&family=Dongle&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Dongle:wght@300&display=swap"
+        rel="stylesheet">
 </head>
 <body>
     <div id="header">
         <h1 id="welcome">Login to your account</h1>
     </div>
-    
+
     <div id="loginForm">
         <form action="{{url_for('login_validator')}}" method="post">
             <label for="username" class="formlabel">Username:</label>
@@ -38,7 +40,7 @@
 
     <div class="donthaveaccount">
         <p>
-            Dont have an account? <a href="https://mortis666stocksimulator.herokuapp.com/signup">Sign up!</a>
+            Dont have an account? <a href="/signup">Sign up!</a>
         </p>
     </div>
     <input id="warning" type="hidden" value="{{warning}}">
