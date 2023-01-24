@@ -2,11 +2,10 @@ import re
 from pymongo import MongoClient
 import os
 from typing import Any, Tuple, Union
-from random import choices
+from random import choices, randint
 from iteration_utilities import unique_everseen
 
-
-db_url = os.environ["MONGO_URL"]
+db_url = os.getenv("MONGO_URL")
 client = MongoClient(db_url)
 
 profiles = client.stocks.profiles
@@ -270,3 +269,117 @@ def search_for(username):
             "stock_value": 1
         }
     )
+
+
+def task():
+    results = profiles.find()
+
+    for result in results: # loop through every profile
+
+        status = result["status"]
+        streak = result["streak"]
+        username = result["username"]
+        stock_left = min(result["stock_left"], 1)
+        stock_value = result["stock_value"]
+        
+        new_status = None
+
+        bonus = 0
+
+        for x in profiles.find():
+            for xstock in x["stocks"]:
+                if xstock["name"] == username and xstock["amount"]:
+                    bonus += 1
+
+            if status == "inc":
+
+                new_status = choices(
+                    population = [
+                        "inc",
+                        "dec",
+                        "rem"
+                    ],
+                    weights = [
+                        30 + streak + bonus,
+                        25 + stock_left/100,
+                        35
+                    ]
+                )[0]
+
+            if status == "dec":
+
+                new_status = choices(
+                    population = [
+                        "inc",
+                        "dec",
+                        "rem"
+                    ],
+                    weights = [
+                        25 + bonus,
+                        30 + streak + stock_left/100,
+                        35
+                    ]
+                )[0]
+
+            if status == "rem":
+
+
+                new_status = choices(
+                    population = [
+                        "inc",
+                        "dec",
+                        "rem"
+                    ],
+                    weights = [
+                        30 + bonus,
+                        30 + stock_left/100,
+                        40 + streak
+                    ]
+                )[0]
+
+            if status == None:
+
+                new_status = choices(
+                    population = [
+                        "inc",
+                        "dec",
+                        "rem"
+                    ],
+                    weights = [
+                        30 + bonus,
+                        30 + stock_left/100,
+                        40
+                    ]
+                )[0]
+        amt = randint(1,3)
+
+        if new_status == "dec":
+            amt *= -1
+        if new_status == "rem":
+            amt *= 0
+        if status == new_status:
+            add_streak(username, 1)
+        else:
+            add_streak(username,-streak)
+
+        if -amt > stock_value:
+            amt = -stock_value
+
+        change_status(username, new_status)
+        add_stock_value(username, amt)
+        add_history(username, stock_value + amt)
+
+        print(f"{username} status: {status} -> {new_status}")
+        print(f"{username} stock price: {stock_value} -> {stock_value+amt}")
+
+        stocks = list(result["stocks"])
+
+        for stock in stocks:
+            if not stock["amount"]:
+                stocks.remove(stock)
+                print(f"Removed {stock['name']} from {username}")
+        
+        set_to(username, "stocks", stocks)
+
+        if stock_left < 0:
+            set_to(username, "stock_left", 0)
