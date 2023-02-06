@@ -11,6 +11,8 @@ client = MongoClient(db_url)
 
 profiles = client.stocks.profiles
 
+os.system("cls")
+
 
 def valid_login(username: str, password: str) -> Tuple[bool,str]:
 
@@ -30,14 +32,16 @@ def valid_signup(username: str, password: str, confirm_password: str) -> Tuple[b
 
     if len(username) < 6:
         return False, "Username must have at least 4 characters"    
-    if len(username) > 15:
+    elif len(username) > 15:
         return False, "Username cannot be more than 15 characters"
-    if not username.replace("_","").isalnum():
+    elif not username.replace("_","").isalnum():
         return False, "Username can only contain alphabets, numbers and \"_\""
-    if password != confirm_password:
+    elif password != confirm_password:
         return False, "Password must be the same"
-    if len(password) < 6:
+    elif len(password) < 6:
         return False, "Password must be atleast 6 characters"
+    elif "zhiheng" in username.replace("_", "").lower():
+        return False, "Inappropriate username"
 
 
 
@@ -206,7 +210,7 @@ def get_user_info(username: str) -> dict:
         }
     )
 
-    return dict(**result)
+    return dict(**(result or {}))
 
 def random_stocks():
 
