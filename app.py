@@ -130,7 +130,7 @@ def login_validator():
             session.pop("login_warning", None)
             print(f"{username} logged in.")
             return redirect(url_for('home'))
-        print(message)
+        print(f"{request.remote_addr}: {message}")
         session["login_warning"] = message
         return redirect(url_for('login'))
     session["login_warning"] = "Please login first"
