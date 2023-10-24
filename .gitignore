@@ -1,2 +1,4 @@
 test.**
 tasks/.env
+.env
+__pycache__/

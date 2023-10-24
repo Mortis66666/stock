@@ -3,3 +3,4 @@ pymongo==4.0.1
 dnspython==2.2.0
 iteration-utilities==0.11.0
 Gunicorn
+python-dotenv

@@ -4,11 +4,12 @@ import os
 from typing import Any, Tuple, Union
 from random import choices
 from iteration_utilities import unique_everseen
+from dotenv import load_dotenv
 
+load_dotenv()
 
 db_url = os.environ["MONGO_URL"]
 client = MongoClient(db_url)
-
 profiles = client.stocks.profiles
 
 os.system("cls")

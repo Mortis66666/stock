@@ -2,10 +2,12 @@ from flask import Flask, jsonify, redirect, render_template, request, url_for, s
 from mongo import *
 import secrets
 import time
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex()
 app.jinja_env.globals.update(get_user_info=get_user_info, enumerate=enumerate)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_host=1)
 
 
 # Routing
@@ -130,7 +132,8 @@ def login_validator():
             session.pop("login_warning", None)
             print(f"{username} logged in.")
             return redirect(url_for('home'))
-        print(f"{request.remote_addr}: {message}")
+        print(dict(request.headers))
+        print(f"{request.remote_addr}: *{message}")
         session["login_warning"] = message
         return redirect(url_for('login'))
     session["login_warning"] = "Please login first"
