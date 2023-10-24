@@ -133,7 +133,7 @@ def login_validator():
             print(f"{username} logged in.")
             return redirect(url_for('home'))
         print(dict(request.headers))
-        print(f"{request.remote_addr}: *{message}")
+        print(f"{request.headers.get('X-Forwarded-For') or request.headers.get('X-Real-IP') or request.remote_addr}: *{message}")
         session["login_warning"] = message
         return redirect(url_for('login'))
     session["login_warning"] = "Please login first"
